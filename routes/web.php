@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('templates/dashboard');
+    return view('pages.example');
 });
