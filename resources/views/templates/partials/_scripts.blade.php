@@ -35,3 +35,4 @@
 <script src="{{ asset('assets/dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
+<script src="{{ asset('assets/plugins/iCheck/icheck.min.js') }}"></script>
