@@ -24,7 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = Auth::user();
+        $active = 0;
+        return view('pages.example', compact('active', 'user'));
     }
 
     public function dashboard(){

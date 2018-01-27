@@ -29,6 +29,7 @@ Route::prefix('staff')->name('staff.')->group(function() {
     Route::get('/', 'StaffController@index')->name('index');
     Route::get('add', 'StaffController@addStaff')->name('add');
     Route::get('list', 'StaffController@listStaff')->name('list');
+    Route::post('add', 'StaffController@create')->name('create');
 });
 Route::prefix('order')->name('order.')->group(function() {
     Route::get('/', 'OrderController@index')->name('index');

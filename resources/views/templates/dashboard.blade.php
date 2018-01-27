@@ -6,6 +6,7 @@
   @include('templates.partials._navbar')
   @include('templates.partials._sidebar')
   <div class="content-wrapper">
+    @include('templates.partials._alert')
     @yield('content')
   </div>
   @include('templates.partials._footer')
