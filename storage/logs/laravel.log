@@ -2015,3 +2015,39 @@
 #54 C:\\Users\\adamfir\\Documents\\AzisPC\\dashboard-admin\\server.php(21): require_once('C:\\\\Users\\\\adamfi...')
 #55 {main}
 "} 
+[2018-02-15 10:46:08] local.ERROR: Command "migrate:drop" is not defined.
+
+Did you mean one of these?
+    migrate
+    migrate:fresh
+    migrate:install
+    migrate:refresh
+    migrate:reset
+    migrate:rollback
+    migrate:status {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"migrate:drop\" is not defined.
+
+Did you mean one of these?
+    migrate
+    migrate:fresh
+    migrate:install
+    migrate:refresh
+    migrate:reset
+    migrate:rollback
+    migrate:status at C:\\Users\\adamfir\\Documents\\AzisPC\\dashboard\\AzisPC-dashboard\\vendor\\symfony\\console\\Application.php:610)
+[stacktrace]
+#0 C:\\Users\\adamfir\\Documents\\AzisPC\\dashboard\\AzisPC-dashboard\\vendor\\symfony\\console\\Application.php(221): Symfony\\Component\\Console\\Application->find('migrate:drop')
+#1 C:\\Users\\adamfir\\Documents\\AzisPC\\dashboard\\AzisPC-dashboard\\vendor\\symfony\\console\\Application.php(148): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\Users\\adamfir\\Documents\\AzisPC\\dashboard\\AzisPC-dashboard\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(88): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\Users\\adamfir\\Documents\\AzisPC\\dashboard\\AzisPC-dashboard\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(121): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\Users\\adamfir\\Documents\\AzisPC\\dashboard\\AzisPC-dashboard\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2018-02-15 10:47:16] local.ERROR: Command "add" is not defined. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"add\" is not defined. at C:\\Users\\adamfir\\Documents\\AzisPC\\dashboard\\AzisPC-dashboard\\vendor\\symfony\\console\\Application.php:610)
+[stacktrace]
+#0 C:\\Users\\adamfir\\Documents\\AzisPC\\dashboard\\AzisPC-dashboard\\vendor\\symfony\\console\\Application.php(221): Symfony\\Component\\Console\\Application->find('add')
+#1 C:\\Users\\adamfir\\Documents\\AzisPC\\dashboard\\AzisPC-dashboard\\vendor\\symfony\\console\\Application.php(148): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\Users\\adamfir\\Documents\\AzisPC\\dashboard\\AzisPC-dashboard\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(88): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\Users\\adamfir\\Documents\\AzisPC\\dashboard\\AzisPC-dashboard\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(121): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\Users\\adamfir\\Documents\\AzisPC\\dashboard\\AzisPC-dashboard\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
