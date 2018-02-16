@@ -9,11 +9,11 @@ class UserTransformer extends TransformerAbstract
     public function transform(User $user)
     {
         return [
-            'name' => $user->name,
+            'nama' => $user->name,
             'email' => $user->email,
             'alamat' => $user->alamat,
-            'phone' => $user->phone,
-            'status' => $user->status,
+            'hp' => $user->phone,
+            'role' => $user->status,
             'registered' => $user->created_at->diffForHumans(),
         ];
     }
