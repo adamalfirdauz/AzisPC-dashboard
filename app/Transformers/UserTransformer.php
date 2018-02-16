@@ -6,14 +6,15 @@ use League\Fractal\TransformerAbstract;
 
 class UserTransformer extends TransformerAbstract
 {
-    public function transformer(User $user)
+    public function transform(User $user)
     {
         return [
             'name' => $user->name,
             'email' => $user->email,
             'alamat' => $user->alamat,
             'phone' => $user->phone,
-            'registered' => $user->created_at->diffForHumans()
+            'status' => $user->status,
+            'registered' => $user->created_at->diffForHumans(),
         ];
     }
 }

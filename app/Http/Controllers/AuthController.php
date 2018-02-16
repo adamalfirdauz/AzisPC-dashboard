@@ -15,16 +15,20 @@ class AuthController extends Controller
         $this->validate($request, [
             'name'      => 'required',
             'email'     => 'required|email|unique:users',
-            'password'  => 'required|min:6'
+            'password'  => 'required|min:6',
+            'alamat'    => 'required',
+            'phone'     => 'required',
+            'status'    => 'required'
         ]);
 
-        $user->create([
+        $user = $user->create([
             'name'      => $request->name,
             'email'     => $request->email,
             'password'  => bcrypt($request->password),
             'api_token' => bcrypt($request->email),
             'alamat'    => $request->alamat,
             'phone'     => $request->phone,
+            'status'    => $request->status
         ]);
         
         $response = fractal()
