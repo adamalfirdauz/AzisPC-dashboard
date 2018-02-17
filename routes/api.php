@@ -21,3 +21,7 @@ Route::get('users', 'UserController@users');
 Route::post('auth/register', 'AuthController@register');
 Route::post('auth/login', 'AuthController@login');
 Route::get('users/profile', 'UserController@profile')->middleware('auth:api');
+Route::get('users/{id}', 'UserController@profileById')->middleware('auth:api');
+Route::post('order/add', 'OrderController@add')->middleware('auth:api');
+Route::put('order/{order}', 'OrderController@update')->middleware('auth:api');
+Route::delete('order/{order}', 'OrderController@delete')->middleware('auth:api');

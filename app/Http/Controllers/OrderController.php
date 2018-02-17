@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Orders;
+use Auth;
+use App\Transformers\OrderTransformer;
 
 class OrderController extends Controller
 {
@@ -40,5 +43,79 @@ class OrderController extends Controller
         $user = Auth::user();
         $active = 16;
         return view('order.archives', compact('active', 'user'));
+    }
+
+
+    public function add(Request $request, Orders $order)
+    {
+        $this->validate($request, [
+            // 'nama' => 'required',
+            // 'alamat' => 'required',
+            // 'customerId' => 'required',
+            'dateIn' => 'required',
+            // 'dateOut' => 'required',
+            'tipeKerusakan' => 'required',
+            'keluhan' => 'required',
+            'kelengkapan' => 'required',
+            'status' => 'required',
+            // 'harga' => 'required',
+            // 'dp' => 'required',
+            'longitude' => 'required',
+            'langitude' => 'required',
+        ]);
+        $order = $order->create([
+            'nama' => Auth::user()->name,
+            'alamat' => Auth::user()->alamat,
+            'user_id' => Auth::user()->id,
+            'dateIn' => $request->dateIn,
+            'dateOut' => $request->dateOut,
+            'tipeKerusakan' => $request->tipeKerusakan,
+            'keluhan' => $request->keluhan,
+            'kelengkapan' => $request->kelengkapan,
+            'status' => $request->status,
+            'harga' => $request->harga,
+            'dp' => $request->dp,
+            'longitude' => $request->longitude,
+            'langitude' => $request->langitude,
+        ]);
+        $response = fractal()
+            ->item($order)
+            ->TransformWith(new OrderTransformer)
+            ->toArray();
+
+        return response()->json($response, 201);
+    }
+
+    public function update(Request $request, Orders $order)
+    {
+        $this->authorize('update', $order);
+        $order->nama = $request->get('nama', $order->nama );
+        $order->alamat = $request->get('alamat', $order->alamat );
+        $order->user_id = $request->get('user_id', $order->user_id );
+        $order->dateIn = $request->get('dateIn', $order->dateIn );
+        $order->dateOut = $request->get('dateOut', $order->dateOut );
+        $order->tipeKerusakan = $request->get('tipeKerusakan', $order->tipeKerusakan );
+        $order->keluhan = $request->get('keluhan', $order->keluhan );
+        $order->kelengkapan = $request->get('kelengkapan', $order->kelengkapan );
+        $order->status = $request->get('status', $order->status );
+        $order->harga = $request->get('harga', $order->harga );
+        $order->dp = $request->get('dp', $order->dp );
+        $order->longitude = $request->get('longitude', $order->longitude );
+        $order->langitude = $request->get('langitude', $order->langitude );
+        $order->save();
+
+        return fractal()
+            ->item($order)
+            ->transformWith(new OrderTransformer)
+            ->toArray();
+    }
+
+    public function delete(Orders $order)
+    {
+        $this->authorize('delete', $order);
+        $order->delete();
+        return response()->json([
+            'message' => 'Order telah dihapus!',
+        ]);
     }
 }

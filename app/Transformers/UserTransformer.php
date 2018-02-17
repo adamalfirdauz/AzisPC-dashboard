@@ -3,9 +3,13 @@
 namespace App\Transformers;
 use App\User;
 use League\Fractal\TransformerAbstract;
+use App\Transformers\OrdersTransformer;
 
 class UserTransformer extends TransformerAbstract
 {
+    protected $availableIncludes = [
+        'orders'
+    ];
     public function transform(User $user)
     {
         return [
@@ -16,5 +20,11 @@ class UserTransformer extends TransformerAbstract
             'role' => $user->status,
             'registered' => $user->created_at->diffForHumans(),
         ];
+    }
+
+    public function includeOrders(User $user)
+    {
+        $orders = $user->orders()->latestFirst()->get();
+        return $this->collection($orders, new OrderTransformer);
     }
 }
