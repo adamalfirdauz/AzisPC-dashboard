@@ -49,7 +49,7 @@ class OrderController extends Controller
     public function add(Request $request, Orders $order)
     {
         $this->validate($request, [
-            // 'nama' => 'required',
+            'namaBarang' => 'required',
             // 'alamat' => 'required',
             // 'customerId' => 'required',
             // 'dateIn' => 'required',
@@ -64,7 +64,7 @@ class OrderController extends Controller
             'langitude' => 'required',
         ]);
         $order = $order->create([
-            'nama' => Auth::user()->name,
+            'nama' => $request->namaBarang,
             'alamat' => Auth::user()->alamat,
             'user_id' => Auth::user()->id,
             'dateIn' => date('Y-m-d H:i:s'),

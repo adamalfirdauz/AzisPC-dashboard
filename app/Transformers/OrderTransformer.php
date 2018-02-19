@@ -2,16 +2,21 @@
 
 namespace App\Transformers;
 use App\Orders;
+use App\User;
+use Auth;
 use League\Fractal\TransformerAbstract;
 
 class OrderTransformer extends TransformerAbstract
 {
     public function transform(Orders $order)
     {
+        $user = new User;
+        $user = $user->find(Auth::user()->id);
         return [
             'id'            => $order->id,
-            'nama'          => $order->nama,
+            'namaBarang'    => $order->nama,
             'alamat'        => $order->alamat,
+            'hp'            => $user->phone,
             'user_id'       => $order->user_id,
             'dateIn'        => $order->dateIn,
             'dateOut'       => $order->dateOut,

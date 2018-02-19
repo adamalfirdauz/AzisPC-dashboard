@@ -17,12 +17,16 @@ class IsStaff
      */
     public function handle($request, Closure $next)
     {
-        $status = (int) Auth::user()->status;
-        if (Auth::user() &&  $status < 3) {
-            return $next($request);
+        if(Auth::user())
+        {
+            $status = (int) Auth::user()->status;
+            if ($status < 3) 
+            {
+                return $next($request);
+            }
+            Auth::logout();
+            return redirect('/login')->with('danger', 'Akses ditolak, anda tidak memiliki hak akses!');
         }
-        Auth::logout();
-        // Session::flush();
         return redirect('/login');
     }
 }
