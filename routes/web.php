@@ -38,4 +38,4 @@ Route::prefix('order')->name('order.')->group(function() {
     Route::get('working', 'OrderController@working')->name('working');
     Route::get('finish', 'OrderController@finish')->name('finish');
     Route::get('archives', 'OrderController@archives')->name('archives');
-});
+}); 

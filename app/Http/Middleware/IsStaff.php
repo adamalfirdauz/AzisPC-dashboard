@@ -5,7 +5,8 @@ namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Closure;
 
-class IsAdmin
+
+class IsStaff
 {
     /**
      * Handle an incoming request.
@@ -17,9 +18,11 @@ class IsAdmin
     public function handle($request, Closure $next)
     {
         $status = (int) Auth::user()->status;
-        if (Auth::user() &&  $status == 1) {
+        if (Auth::user() &&  $status < 3) {
             return $next($request);
         }
+        Auth::logout();
+        // Session::flush();
         return redirect('/login');
     }
 }

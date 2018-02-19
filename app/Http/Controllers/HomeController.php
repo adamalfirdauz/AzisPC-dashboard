@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('staff');
     }
 
     /**
@@ -30,6 +30,7 @@ class HomeController extends Controller
     }
 
     public function dashboard(){
+        $this->middleware('staff');
         $user = Auth::user();
         $active = 0;
         return view('pages.example', compact('active', 'user'));
