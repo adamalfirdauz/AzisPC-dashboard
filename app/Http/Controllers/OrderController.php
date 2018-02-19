@@ -110,6 +110,18 @@ class OrderController extends Controller
             ->toArray();
     }
 
+    public function orderById(Orders $order, $user_id)
+    {
+        $order = $order->where('user_id', '=', $user_id)->get();
+        $order = (object) $order;
+        // dd($order);
+        return fractal()
+            ->collection($order)
+            ->transformWith(new OrderTransformer)
+            ->includeOrders()
+            ->toArray();
+    }
+
     public function delete(Orders $order)
     {
         $this->authorize('delete', $order);
