@@ -63,13 +63,39 @@
                                     {{--  <span class="glyphicon glyphicon-lock form-control-feedback"></span>  --}}
                                 </div>
                                 <div class="form-group has-feedback">
-                                    <label class="col-sm-3 control-label">Retype Password</label>
+                                    <label class="col-sm-3 control-label">Ulang Password</label>
                                     <div class="col-sm-8">
-                                        <input id="password-confirm" type="password" class="form-control" placeholder="Retype password" name="password_confirmation" required>
+                                        <input id="password-confirm" type="password" class="form-control" placeholder="Password" name="password_confirmation" required>
                                     </div>
                                     {{--  <span class="glyphicon glyphicon-log-in form-control-feedback"></span>  --}}
                                 </div>
-                                <input type="hidden" name="status" id="status" value="staff">
+                                <input type="hidden" name="status" id="status" value="2">
+                                <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }} has-feedback">
+                                    <label class="col-sm-3 control-label">Nomor HP</label>
+                                    <div class="col-sm-8">
+                                        <input id="phone" name="phone" type="text" class="form-control" placeholder="Nomor HP" value="{{ old('phone') }}" required>
+                                        @if ($errors->has('phone'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('phone') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <div class="col-sm-1"> </div>
+                                    {{--  <span class="glyphicon glyphicon-envelope form-control-feedback"></span>  --}}
+                                </div>
+                                <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }} has-feedback">
+                                    <label class="col-sm-3 control-label">Alamat</label>
+                                    <div class="col-sm-8">
+                                        <input id="alamat" name="alamat" type="text" class="form-control" placeholder="Alamat" value="{{ old('alamat') }}" required>
+                                        @if ($errors->has('alamat'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('alamat') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <div class="col-sm-1"> </div>
+                                    {{--  <span class="glyphicon glyphicon-envelope form-control-feedback"></span>  --}}
+                                </div>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">

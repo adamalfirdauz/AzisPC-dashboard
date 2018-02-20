@@ -13,5 +13,6 @@
   <div class="control-sidebar-bg"></div>
 </div>
 @include('templates.partials._scripts')
+@yield('script')
 </body>
 </html>

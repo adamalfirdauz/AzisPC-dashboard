@@ -35,13 +35,19 @@ class StaffController extends Controller
             'name' => 'required|regex:/^[a-zA-Z ]+$/|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'status' => 'required|string'
+            'status' => 'required|string',
+            'phone' => 'required|string|min:10',
+            'alamat' => 'required|string',
+
         ]);
         User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'status' => $data['status'],
+            'phone' => $data['phone'],
+            'alamat' => $data['alamat'],
+            'api_token' => bcrypt($data['email']),
         ]);
         return back()->with('success', 'Pegawai telah ditambahkan!');
     }

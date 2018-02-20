@@ -33,6 +33,7 @@
             </span>
           </a>
         </li>
+        @if (Auth::user()->status == 1)
         <li class="treeview @if($active>=1 and $active<=5) active @endif">
           <a href="#">
             <i class="fa fa-pie-chart "></i>
@@ -42,13 +43,14 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li @if ($active == 1) class="active" @endif><a href="{{ route('staff.index') }}"><i class="fa fa-circle-o"></i> Activity</a></li>
+            {{--  <li @if ($active == 1) class="active" @endif><a href="{{ route('staff.index') }}"><i class="fa fa-circle-o"></i> Activity</a></li>  --}}
             <li @if ($active == 2) class="active" @endif><a href="{{ route('staff.add') }}"><i class="fa fa-circle-o"></i> Add</a></li>
             <li @if ($active == 3) class="active" @endif><a href="{{ route('staff.list') }}"><i class="fa fa-circle-o"></i> List Staff</a></li>
             {{--  <li><a href="#"><i class="fa fa-circle-o"></i> Update</a></li>  --}}
             {{--  <li><a href="#"><i class="fa fa-circle-o"></i> Delete</a></li>  --}}
           </ul>
         </li>
+        @endif
         <li class="treeview @if($active>=11 and $active<=16) active @endif">
           <a href="#">
             <i class="fa fa-laptop"></i>
