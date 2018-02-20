@@ -16,10 +16,15 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        $status = (int) Auth::user()->status;
-        if (Auth::user() &&  $status == 1) {
-            return $next($request);
+        if(Auth::user())
+        {
+            $status = (int) Auth::user()->status;
+            if ($status == 1) 
+            {
+                return $next($request);
+            }
+            return redirect('/')->with('danger', 'Akses ditolak, anda tidak memiliki otoritas untuk mengakses halaman tersebut.');
         }
-        return redirect('/login');
+        return redirect('/login')->with('danger', 'Anda belum login, silahkan login terlebih dahulu.');
     }
 }
