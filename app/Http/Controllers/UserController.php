@@ -43,22 +43,34 @@ class UserController extends Controller
 
     public function updateProfile(Request $requset, User $user, $user_id)
     {
-        if ($user->foto) {
-            Storage::delete($user->foto);
+        $validatedData = $requset->validate([
+            'name' => 'required|regex:/^[a-zA-Z ]+$/|max:255',
+            'password' => 'required|string|min:6',
+            'phone' => 'required|string|min:10',
+            'alamat' => 'required|string',
+            'foto' => 'file|image'
+        ]);
+        if($requset->file('foto'))
+        {
+            if ($user->foto) {
+                Storage::delete($user->foto);
+            }
+            $foto = $requset->file('foto')->store('users/foto');
+            $user->where('id', $user_id)->update([
+                'foto' => $foto
+            ]);
         }
-        $foto = $requset->file('foto')->store('users/foto');
         $user->where('id', $user_id)->update([
             'name' => $requset->name,
             'password' => bcrypt($requset->password),
             'alamat' => $requset->alamat,
-            'phone' => $requset->phone,
-            'foto' => $foto
+            'phone' => $requset->phone
         ]);
         $user = User::where('id', '=', $user_id)->get();
         return fractal()
             ->collection($user)
             ->transformWith(new UserTransformer)
-            // ->includeOrders()
+            ->includeOrders()
             ->toArray();
     }
 }
