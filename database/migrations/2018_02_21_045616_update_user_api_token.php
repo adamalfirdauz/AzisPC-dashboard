@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateOrderTableTimestamps extends Migration
+class UpdateUserApiToken extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class UpdateOrderTableTimestamps extends Migration
      */
     public function up()
     {
-        // Schema::table('orders', function(Blueprint $table){
-        //     $table->timestamp('dateIn')->change();
-        //     // $table->nullableTimestamps('dateOut');
-        // });
+        Schema::table('users', function(Blueprint $table){
+            $table->string('api_token')->nullable()->default(null)->change();
+        });
     }
 
     /**

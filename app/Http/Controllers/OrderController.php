@@ -88,6 +88,7 @@ class OrderController extends Controller
 
     public function update(Request $request, Orders $order)
     {
+        // dd($order);
         $this->authorize('update', $order);
         $order->nama = $request->get('nama', $order->nama );
         $order->alamat = $request->get('alamat', $order->alamat );

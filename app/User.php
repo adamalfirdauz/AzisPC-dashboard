@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Orders;
+use App\User;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'status', 'phone', 'alamat', 'api_token'
+        'name', 'email', 'password', 'status', 'phone', 'alamat', 'api_token', 'foto'
     ];
 
     /**
@@ -36,5 +37,10 @@ class User extends Authenticatable
     public function ownsOrder(Orders $order)
     {
         return auth()->id() == $order->user->id;
+    }
+
+    public function ownsUser(User $user)
+    {
+        return auth()->id() == $user->user->id;
     }
 }

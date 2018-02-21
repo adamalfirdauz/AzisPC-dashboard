@@ -20,6 +20,7 @@ class UserTransformer extends TransformerAbstract
             'hp' => $user->phone,
             'role' => $user->status,
             'registered' => $user->created_at->diffForHumans(),
+            'foto' => 'storage/'.$user->foto
         ];
     }
 

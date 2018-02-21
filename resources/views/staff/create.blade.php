@@ -20,7 +20,7 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form class="form-horizontal" action="{{ route('staff.create') }}" method="post">
+                        <form class="form-horizontal" action="{{ route('staff.create') }}" method="post" enctype="multipart/form-data">
                             <div class="box-body">
                                 {{ csrf_field() }}
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }} has-feedback">
@@ -94,7 +94,19 @@
                                         @endif
                                     </div>
                                     <div class="col-sm-1"> </div>
-                                    {{--  <span class="glyphicon glyphicon-envelope form-control-feedback"></span>  --}}
+                                </div>
+                                <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }} has-feedback">
+                                    <label class="col-sm-3 control-label">Foto</label>
+                                    <div class="col-sm-8">
+                                        {{-- <img src="{{asset('storage/'.Auth::user()->foto)}}" alt="" width="120px"> --}}
+                                        <input id="foto" name="foto" type="file" class="form-control">
+                                        @if ($errors->has('foto'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('foto') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <div class="col-sm-1"> </div>
                                 </div>
                             </div>
                             <!-- /.box-body -->

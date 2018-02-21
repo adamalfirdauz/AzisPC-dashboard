@@ -38,8 +38,10 @@ class StaffController extends Controller
             'status' => 'required|string',
             'phone' => 'required|string|min:10',
             'alamat' => 'required|string',
-
+            'foto' => 'file|image'
         ]);
+        $foto = $data->file('foto')->store('users/foto');
+        // dd($data['foto']);
         User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -48,6 +50,7 @@ class StaffController extends Controller
             'phone' => $data['phone'],
             'alamat' => $data['alamat'],
             'api_token' => bcrypt($data['email']),
+            'foto' => $foto,
         ]);
         return back()->with('success', 'Pegawai telah ditambahkan!');
     }

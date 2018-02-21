@@ -18,9 +18,11 @@ class AuthController extends Controller
             'password'  => 'required|min:6',
             'alamat'    => 'required',
             'phone'     => 'required',
-            'status'    => 'required'
+            'status'    => 'required',
+            'foto'      => 'file|image'
         ]);
-
+        
+        $foto = $request->file('foto')->store('users/foto');
         $user = $user->create([
             'name'      => $request->name,
             'email'     => $request->email,
@@ -28,7 +30,8 @@ class AuthController extends Controller
             'api_token' => bcrypt($request->email),
             'alamat'    => $request->alamat,
             'phone'     => $request->phone,
-            'status'    => $request->status
+            'status'    => $request->status,
+            'foto'      => $foto
         ]);
         
         $response = fractal()

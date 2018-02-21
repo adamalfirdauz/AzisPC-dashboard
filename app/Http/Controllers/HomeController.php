@@ -33,6 +33,8 @@ class HomeController extends Controller
         $this->middleware('staff');
         $user = Auth::user();
         $active = 0;
+        // $path = Auth::user()->foto;
+        // dd($path);
         return view('pages.example', compact('active', 'user'));
     }
 }
