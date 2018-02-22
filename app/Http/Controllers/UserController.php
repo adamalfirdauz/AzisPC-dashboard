@@ -41,31 +41,49 @@ class UserController extends Controller
             ->toArray();
     }
 
-    public function updateProfile(Request $requset, User $user, $user_id)
+    public function updateProfile(Request $request, User $user, $user_id)
     {
-        $validatedData = $requset->validate([
-            'name' => 'required|regex:/^[a-zA-Z ]+$/|max:255',
-            'password' => 'required|string|min:6',
-            'phone' => 'required|string|min:10',
-            'alamat' => 'required|string',
+        $validatedData = $request->validate([
+            'name' => 'regex:/^[a-zA-Z ]+$/|max:255',
+            'password' => 'string|min:6',
+            'phone' => 'string|min:10',
+            'alamat' => 'string',
             'foto' => 'file|image'
         ]);
-        if($requset->file('foto'))
+        if($request->file('foto'))
         {
             if ($user->foto) {
                 Storage::delete($user->foto);
             }
-            $foto = $requset->file('foto')->store('users/foto');
+            $foto = $request->file('foto')->store('users/foto');
             $user->where('id', $user_id)->update([
                 'foto' => $foto
             ]);
         }
-        $user->where('id', $user_id)->update([
-            'name' => $requset->name,
-            'password' => bcrypt($requset->password),
-            'alamat' => $requset->alamat,
-            'phone' => $requset->phone
-        ]);
+        if($request->password)
+        {
+            $user->where('id', $user_id)->update([
+                'password' => bcrypt($request->password)
+            ]);
+        }
+        if($request->name)
+        {
+            $user->where('id', $user_id)->update([
+                'name' => $request->name
+            ]);
+        }
+        if($request->alamat)
+        {
+            $user->where('id', $user_id)->update([
+                'alamat' => $request->alamat
+            ]);
+        }
+        if($request->phone)
+        {
+            $user->where('id', $user_id)->update([
+                'phone' => $request->phone
+            ]);
+        }
         $user = User::where('id', '=', $user_id)->get();
         return fractal()
             ->collection($user)

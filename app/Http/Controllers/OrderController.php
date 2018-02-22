@@ -90,19 +90,19 @@ class OrderController extends Controller
     {
         // dd($order);
         $this->authorize('update', $order);
-        $order->nama = $request->get('nama', $order->nama );
-        $order->alamat = $request->get('alamat', $order->alamat );
-        $order->user_id = $request->get('user_id', $order->user_id );
-        $order->dateIn = $request->get('dateIn', $order->dateIn );
-        $order->dateOut = $request->get('dateOut', $order->dateOut );
-        $order->tipeKerusakan = $request->get('tipeKerusakan', $order->tipeKerusakan );
-        $order->keluhan = $request->get('keluhan', $order->keluhan );
-        $order->kelengkapan = $request->get('kelengkapan', $order->kelengkapan );
-        $order->status = $request->get('status', $order->status );
-        $order->harga = $request->get('harga', $order->harga );
-        $order->dp = $request->get('dp', $order->dp );
-        $order->longitude = $request->get('longitude', $order->longitude );
-        $order->langitude = $request->get('langitude', $order->langitude );
+        $order->nama                = $request->get('nama', $order->nama );
+        $order->alamat              = $request->get('alamat', $order->alamat );
+        $order->user_id             = $request->get('user_id', $order->user_id );
+        $order->dateIn              = $request->get('dateIn', $order->dateIn );
+        $order->dateOut             = $request->get('dateOut', $order->dateOut );
+        $order->tipeKerusakan       = $request->get('tipeKerusakan', $order->tipeKerusakan );
+        $order->keluhan             = $request->get('keluhan', $order->keluhan );
+        $order->kelengkapan         = $request->get('kelengkapan', $order->kelengkapan );
+        $order->status              = $request->get('status', $order->status );
+        $order->harga               = $request->get('harga', $order->harga );
+        $order->dp                  = $request->get('dp', $order->dp );
+        $order->longitude           = $request->get('longitude', $order->longitude );
+        $order->langitude           = $request->get('langitude', $order->langitude );
         $order->save();
 
         return fractal()
