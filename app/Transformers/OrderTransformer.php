@@ -12,6 +12,14 @@ class OrderTransformer extends TransformerAbstract
     {
         $user = new User;
         $user = $user->find(Auth::user()->id);
+        $orders = Orders::where('id', '=', $order->id)->get();
+        // dd($orders);
+        $foto = $orders[0]->foto;
+        if($foto != null)
+        {
+            $foto = 'storage/'.$foto;
+        }
+        // dd($orders,$foto);
         return [
             'id'            => $order->id,
             'namaBarang'    => $order->nama,
@@ -28,6 +36,7 @@ class OrderTransformer extends TransformerAbstract
             'dp'            => $order->dp,
             'longitude'     => $order->longitude,
             'langitude'     => $order->langitude,
+            'foto'          => $foto,
         ];
     }
 }

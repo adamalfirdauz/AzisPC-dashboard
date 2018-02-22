@@ -12,6 +12,11 @@ class UserTransformer extends TransformerAbstract
     ];
     public function transform(User $user)
     {
+        $foto = null;
+        if($user->foto != null)
+        {
+            $foto = 'storage/'.$user->foto;
+        }
         return [
             'id' => $user->id,
             'nama' => $user->name,
@@ -20,7 +25,7 @@ class UserTransformer extends TransformerAbstract
             'hp' => $user->phone,
             'role' => $user->status,
             'registered' => $user->created_at->diffForHumans(),
-            'foto' => 'storage/'.$user->foto
+            'foto' => $foto
         ];
     }
 
