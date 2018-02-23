@@ -21,8 +21,11 @@ class AuthController extends Controller
             'status'    => 'required',
             'foto'      => 'file|image'
         ]);
-        
-        $foto = $request->file('foto')->store('users/foto');
+        $foto = null;
+        if($request->file('foto'))
+        {
+            $foto = $request->file('foto')->store('users/foto');
+        }
         $user = $user->create([
             'name'      => $request->name,
             'email'     => $request->email,
