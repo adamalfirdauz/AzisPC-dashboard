@@ -48,7 +48,7 @@ class UserController extends Controller
             'password' => 'string|min:6',
             'phone' => 'string|min:10',
             'alamat' => 'string',
-            'foto' => 'required|file'
+            'foto' => 'required|file|image'
         ]);
         // if($request->foto)
         // {
@@ -62,19 +62,16 @@ class UserController extends Controller
         //     ]);
         // }
         // kalau file inputnya bisa
-        // dd($request->foto[]);
-        // dd($request->file('foto'));
-        // dd($request->hasfile('foto'));
-        // if($request->foto)
-        // {
+        if($request->hasfile('foto'))
+        {
             if ($user->foto) {
                 Storage::delete($user->foto);
             }
-            $foto = $request->foto->store('users/foto');
+            $foto = $request->file('foto')->store('users/foto');
             $user->where('id', $user_id)->update([
                 'foto' => $foto
             ]);
-        // }
+        }
         if($request->password)
         {
             $user->where('id', $user_id)->update([
