@@ -28,7 +28,7 @@ class ApiOrderController extends Controller
             // 'dp' => 'required',
             'longitude' => 'required',
             'langitude' => 'required',
-            // 'foto'      => 'file|image'
+            'foto'      => 'file|image'
         ]);
         $order = $order->create([
             'nama'          => $request->namaBarang,
@@ -45,27 +45,27 @@ class ApiOrderController extends Controller
             'longitude'     => $request->longitude,
             'langitude'     => $request->langitude,
         ]);
-        // if($request->file('foto'))
-        // {
-        //     if ($order->foto) {
-        //         Storage::delete($order->foto);
-        //     }
-        //     $foto = $request->file('foto')->store('orders/foto');
-        //     $order->where('id', $order->id)->update([
-        //         'foto' => $foto
-        //     ]);
-        // }
-        if($request->foto)
+        if($request->file('foto'))
         {
             if ($order->foto) {
                 Storage::delete($order->foto);
             }
-            $foto = base64_decode($request->foto);
-            $foto = $foto->store('orders/foto');
+            $foto = $request->file('foto')->store('orders/foto');
             $order->where('id', $order->id)->update([
                 'foto' => $foto
             ]);
         }
+        // if($request->foto)
+        // {
+        //     if ($order->foto) {
+        //         Storage::delete($order->foto);
+        //     }
+        //     $foto = base64_decode($request->foto);
+        //     $foto = $foto->store('orders/foto');
+        //     $order->where('id', $order->id)->update([
+        //         'foto' => $foto
+        //     ]);
+        // }
         $response = fractal()
             ->item($order)
             ->TransformWith(new OrderTransformer)
@@ -90,6 +90,15 @@ class ApiOrderController extends Controller
         // $order->dp                  = $request->get('dp', $order->dp );
         $order->longitude           = $request->get('longitude', $order->longitude );
         $order->langitude           = $request->get('langitude', $order->langitude );
+        // if ($request->foto) {
+        //     if ($order->foto) {
+        //         Storage::delete($order->foto);
+        //     }
+        //     $foto = base64_decode($request->foto);
+        //     // dd($foto);
+        //     $foto = $foto->store('users/foto');
+        //     $order->foto = $foto;
+        // }
         if ($request->file('foto')) {
             if ($order->foto) {
                 Storage::delete($order->foto);

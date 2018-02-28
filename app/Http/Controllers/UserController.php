@@ -52,11 +52,11 @@ class UserController extends Controller
         ]);
         if($request->foto)
         {
-            $foto = base64_decode($request->foto);
+            $tmp = base64_decode($request->foto);
             if ($user->foto) {
                 Storage::delete($user->foto);
             }
-            $foto = $foto->store('users/foto');
+            $foto = $tmp->store('users/foto');
             $user->where('id', $user_id)->update([
                 'foto' => $foto
             ]);
