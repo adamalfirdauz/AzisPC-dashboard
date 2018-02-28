@@ -48,7 +48,7 @@ class UserController extends Controller
             'password' => 'string|min:6',
             'phone' => 'string|min:10',
             'alamat' => 'string',
-            'foto' => 'file|image'
+            'foto' => 'required|file'
         ]);
         // if($request->foto)
         // {
