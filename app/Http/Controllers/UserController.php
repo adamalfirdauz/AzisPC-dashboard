@@ -64,8 +64,8 @@ class UserController extends Controller
         // kalau file inputnya bisa
         if($request->hasfile('foto'))
         {
-            if ($user->foto) {
-                Storage::delete($user->foto);
+            if (Auth::user()->foto) {
+                Storage::delete(Auth::user()->foto);
             }
             $foto = $request->file('foto')->store('users/foto');
             $user->where('id', $user_id)->update([
