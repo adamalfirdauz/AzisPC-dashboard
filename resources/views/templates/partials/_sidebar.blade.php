@@ -3,7 +3,7 @@
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel">
-        <div class="pull-left image">
+        <div class="pull-left image"> 
           <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
@@ -24,7 +24,7 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
+        {{--  <li class="header">MAIN NAVIGATION</li>  --}}
         <li @if ($active == 0) class="active" @endif>
           <a href="{{ route('dashboard') }}">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
@@ -33,7 +33,6 @@
             </span>
           </a>
         </li>
-        @if (Auth::user()->status == 1)
         <li class="treeview @if($active>=1 and $active<=5) active @endif">
           <a href="#">
             <i class="fa fa-pie-chart "></i>
@@ -50,7 +49,14 @@
             {{--  <li><a href="#"><i class="fa fa-circle-o"></i> Delete</a></li>  --}}
           </ul>
         </li>
-        @endif
+        {{--  <li @if ($active == 1) class="active" @endif>
+          <a href="#">
+            <i class="fa fa-commenting-o"></i> <span>Review</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        </li>  --}}
         <li class="treeview @if($active>=11 and $active<=16) active @endif">
           <a href="#">
             <i class="fa fa-laptop"></i>
@@ -60,9 +66,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li @if ($active == 11) class="active" @endif><a href="{{ route('order.index') }}"><i class="fa fa-circle-o"></i> Overview</a></li>
+            {{--  <li @if ($active == 11) class="active" @endif><a href="{{ route('order.index') }}"><i class="fa fa-circle-o"></i> Overview</a></li>  --}}
             <li @if ($active == 12) class="active" @endif><a href="{{ route('order.waiting') }}"><i class="fa fa-circle-o"></i> Waiting List</a></li>
-            <li @if ($active == 13) class="active" @endif><a href="{{ route('order.accepted') }}"><i class="fa fa-circle-o"></i> Accepted List</a></li>
+            {{--  <li @if ($active == 13) class="active" @endif><a href="{{ route('order.accepted') }}"><i class="fa fa-circle-o"></i> Accepted List</a></li>  --}}
             <li @if ($active == 14) class="active" @endif><a href="{{ route('order.working') }}"><i class="fa fa-circle-o"></i> Working</a></li>
             <li @if ($active == 15) class="active" @endif><a href="{{ route('order.finish') }}"><i class="fa fa-circle-o"></i> Finish</a></li>
             <li @if ($active == 16) class="active" @endif><a href="{{ route('order.archives') }}"><i class="fa fa-circle-o"></i> Archives</a></li>
