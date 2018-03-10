@@ -45,7 +45,7 @@ class ApiOrderController extends Controller
             'longitude'     => $request->longitude,
             'langitude'     => $request->langitude,
         ]);
-        if($request->file('foto'))
+        if($request->hasfile('foto'))
         {
             if ($order->foto) {
                 Storage::delete($order->foto);
@@ -103,7 +103,7 @@ class ApiOrderController extends Controller
             if ($order->foto) {
                 Storage::delete($order->foto);
             }
-            $foto = $request->file('foto')->store('users/foto');
+            $foto = $request->file('foto')->store('users/order'.Auth::user()->email);
             $order->foto = $foto;
         }
         $order->save();
