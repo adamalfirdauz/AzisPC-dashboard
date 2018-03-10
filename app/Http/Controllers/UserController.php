@@ -48,20 +48,8 @@ class UserController extends Controller
             'password' => 'string|min:6',
             'phone' => 'string|min:10',
             'alamat' => 'string',
-            'foto' => 'file|image' //modify soon
+            'foto' => 'file|image'
         ]);
-        // if($request->foto)
-        // {
-        //     $foto = base64_decode($request->foto);
-        //     if ($user->foto) {
-        //         Storage::delete($user->foto);
-        //     }
-        //     $foto = $foto->store('users/foto');
-        //     $user->where('id', $user_id)->update([
-        //         'foto' => $foto
-        //     ]);
-        // }
-        // kalau file inputnya bisa
         if($request->hasfile('foto'))
         {
             if ($user->foto) {
