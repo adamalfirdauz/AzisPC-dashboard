@@ -45,4 +45,17 @@ class OrderController extends Controller
         $active = 16;
         return view('order.archives', compact('active', 'user'));
     }
+    public function ambilBarang(Request $request){
+        $order = Orders::where('id', '=', $request->id)->first();
+        if($order->status == 1){
+            $success = $order->update([
+                'status' => 2
+            ]);
+            if($success){
+                return back()->with('success', 'Barang telah diambil, masuk ke tahap diagnosa.');
+            }
+            return back()->with('danger', 'Gagal mengambil barang, silahkan coba lagi.');
+        }
+        return back()->with('danger', 'Barang tidak ada.');
+    }
 }

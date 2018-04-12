@@ -3,153 +3,32 @@
 @section('content')
     <section class="content-header">
         <h1>
-        Waiting Order
+        Daftar Tunggu
         </h1>
     </section>
     <section class="content">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="pict">
-                                <img src="/assets/dist/img/gambar.jpg" height="80">
+        @foreach (App\Orders::where('status', '=', 1)->get() as $item)
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="pict">
+                                <img src="{{asset('storage/'.$item->foto)}}" height="80">
+                                </div>
                             </div>
-                        </div>
-                        <div class="text col-sm-9">
-                            <h3>Ibro Ibrahim</h3>
-                            <p id="date">1 Hari yang lalu, 08.30</p>
-                            <p id="productName">Laptop ACER (Awas CEpat Rusak)</p>
-                            <button type="button" class="btn btn-primary pull-right" id="detailbtn" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="pict">
-                                <img src="/assets/dist/img/gambar.jpg" height="80">
+                            <div class="text col-sm-9">
+                                <h3>{{$item->nama}}</h3>
+                                <p id="date">{{$item->created_at}}</p>
+                                <p id="productName">{{$item->nama}}</p>
+                                <button type="button" class="btn btn-primary pull-right" id="detailbtn" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">Detail</button>
                             </div>
-                        </div>
-                        <div class="text col-sm-9">
-                            <h3>Ibro Ibrahim</h3>
-                            <p id="date">1 Hari yang lalu, 08.30</p>
-                            <p id="productName">Laptop ACER (Awas CEpat Rusak)</p>
-                            <button type="button" class="btn btn-primary pull-right" id="detailbtn" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="pict">
-                                <img src="/assets/dist/img/gambar.jpg" height="80">
-                            </div>
-                        </div>
-                        <div class="text col-sm-9">
-                            <h3>Ibro Ibrahim</h3>
-                            <p id="date">1 Hari yang lalu, 08.30</p>
-                            <p id="productName">Laptop ACER (Awas CEpat Rusak)</p>
-                            <button type="button" class="btn btn-primary pull-right" id="detailbtn" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="pict">
-                                <img src="/assets/dist/img/gambar.jpg" height="80">
-                            </div>
-                        </div>
-                        <div class="text col-sm-9">
-                            <h3>Ibro Ibrahim</h3>
-                            <p id="date">1 Hari yang lalu, 08.30</p>
-                            <p id="productName">Laptop ACER (Awas CEpat Rusak)</p>
-                            <button type="button" class="btn btn-primary pull-right" id="detailbtn" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="pict">
-                                <img src="/assets/dist/img/gambar.jpg" height="80">
-                            </div>
-                        </div>
-                        <div class="text col-sm-9">
-                            <h3>Ibro Ibrahim</h3>
-                            <p id="date">1 Hari yang lalu, 08.30</p>
-                            <p id="productName">Laptop ACER (Awas CEpat Rusak)</p>
-                            <button type="button" class="btn btn-primary pull-right" id="detailbtn" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="pict">
-                                <img src="/assets/dist/img/gambar.jpg" height="80">
-                            </div>
-                        </div>
-                        <div class="text col-sm-9">
-                            <h3>Ibro Ibrahim</h3>
-                            <p id="date">1 Hari yang lalu, 08.30</p>
-                            <p id="productName">Laptop ACER (Awas CEpat Rusak)</p>
-                            <button type="button" class="btn btn-primary pull-right" id="detailbtn" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="pict">
-                                <img src="/assets/dist/img/gambar.jpg" height="80">
-                            </div>
-                        </div>
-                        <div class="text col-sm-9">
-                            <h3>Ibro Ibrahim</h3>
-                            <p id="date">1 Hari yang lalu, 08.30</p>
-                            <p id="productName">Laptop ACER (Awas CEpat Rusak)</p>
-                            <button type="button" class="btn btn-primary pull-right" id="detailbtn" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="pict">
-                                <img src="/assets/dist/img/gambar.jpg" height="80">
-                            </div>
-                        </div>
-                        <div class="text col-sm-9">
-                            <h3>Ibro Ibrahim</h3>
-                            <p id="date">1 Hari yang lalu, 08.30</p>
-                            <p id="productName">Laptop ACER (Awas CEpat Rusak)</p>
-                            <button type="button" class="btn btn-primary pull-right" id="detailbtn" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="pict">
-                                <img src="/assets/dist/img/gambar.jpg" height="80">
-                            </div>
-                        </div>
-                        <div class="text col-sm-9">
-                            <h3>Ibro Ibrahim</h3>
-                            <p id="date">1 Hari yang lalu, 08.30</p>
-                            <p id="productName">Laptop ACER (Awas CEpat Rusak)</p>
-                            <button type="button" class="btn btn-primary pull-right" id="detailbtn" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
         {{--  Modal  --}}
-
-        <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade bd-example-modal-lg" id="exampleModalCenter{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
@@ -234,11 +113,16 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancel">Batalkan</button>
-                    <button type="button" class="btn btn-success" style="width:100px" id="accept">Terima</button>
+                    {{-- <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancel">Batalkan</button> --}}
+                    <form action="{{route('order.ambilBarang')}}" method="post">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="id" value="{{$item->id}}">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat" id="accept"><b>Ambil Barang</b></button>
+                    </form>
                 </div>
                 </div>
             </div>
         </div>
+        @endforeach
     </section>
 @endsection

@@ -67,11 +67,11 @@
           </a>
           <ul class="treeview-menu">
             {{--  <li @if ($active == 11) class="active" @endif><a href="{{ route('order.index') }}"><i class="fa fa-circle-o"></i> Overview</a></li>  --}}
-            <li @if ($active == 12) class="active" @endif><a href="{{ route('order.waiting') }}"><i class="fa fa-circle-o"></i> Waiting List</a></li>
-            {{--  <li @if ($active == 13) class="active" @endif><a href="{{ route('order.accepted') }}"><i class="fa fa-circle-o"></i> Accepted List</a></li>  --}}
-            <li @if ($active == 14) class="active" @endif><a href="{{ route('order.working') }}"><i class="fa fa-circle-o"></i> Working</a></li>
-            <li @if ($active == 15) class="active" @endif><a href="{{ route('order.finish') }}"><i class="fa fa-circle-o"></i> Finish</a></li>
-            <li @if ($active == 16) class="active" @endif><a href="{{ route('order.archives') }}"><i class="fa fa-circle-o"></i> Archives</a></li>
+            <li @if ($active == 12) class="active" @endif><a href="{{ route('order.waiting') }}"><i class="fa fa-circle-o"></i>Daftar Tunggu</a></li>
+             <li @if ($active == 13) class="active" @endif><a href="{{ route('order.accepted') }}"><i class="fa fa-circle-o"></i>Diagnosa</a></li> 
+            <li @if ($active == 14) class="active" @endif><a href="{{ route('order.working') }}"><i class="fa fa-circle-o"></i>Sedang Dikerjakan</a></li>
+            <li @if ($active == 15) class="active" @endif><a href="{{ route('order.finish') }}"><i class="fa fa-circle-o"></i>Selesai</a></li>
+            <li @if ($active == 16) class="active" @endif><a href="{{ route('order.archives') }}"><i class="fa fa-circle-o"></i>Arsip</a></li>
           </ul>
         </li>
       </ul>

@@ -128,10 +128,15 @@
 
 .content-header {
   margin-top: 50px;
+  padding: 15px 15px 0px 5px;
 }
 
 .content {
   margin-top: 10px;
   margin-bottom: 20px;
+}
+
+.alert {
+  margin-top: 50px;
 }
 

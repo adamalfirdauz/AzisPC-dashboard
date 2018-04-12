@@ -35,7 +35,6 @@ class ApiOrderController extends Controller
             'alamat'        => Auth::user()->alamat,
             'user_id'       => Auth::user()->id,
             'dateIn'        => date('Y-m-d H:i:s'),
-            // 'dateOut' => $request->dateOut,
             'tipeKerusakan' => $request->tipeKerusakan,
             'keluhan'       => $request->keluhan,
             'kelengkapan'   => $request->kelengkapan,
@@ -55,17 +54,6 @@ class ApiOrderController extends Controller
                 'foto' => $foto
             ]);
         }
-        // if($request->foto)
-        // {
-        //     if ($order->foto) {
-        //         Storage::delete($order->foto);
-        //     }
-        //     $foto = base64_decode($request->foto);
-        //     $foto = $foto->store('orders/foto');
-        //     $order->where('id', $order->id)->update([
-        //         'foto' => $foto
-        //     ]);
-        // }
         $response = fractal()
             ->item($order)
             ->TransformWith(new OrderTransformer)
@@ -90,15 +78,6 @@ class ApiOrderController extends Controller
         // $order->dp                  = $request->get('dp', $order->dp );
         $order->longitude           = $request->get('longitude', $order->longitude );
         $order->langitude           = $request->get('langitude', $order->langitude );
-        // if ($request->foto) {
-        //     if ($order->foto) {
-        //         Storage::delete($order->foto);
-        //     }
-        //     $foto = base64_decode($request->foto);
-        //     // dd($foto);
-        //     $foto = $foto->store('users/foto');
-        //     $order->foto = $foto;
-        // }
         if ($request->file('foto')) {
             if ($order->foto) {
                 Storage::delete($order->foto);
