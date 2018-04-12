@@ -1,9 +1,17 @@
 @extends('templates.dashboard')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
-            <h1>order accepted</h1>
+    <section class="content-header">
+        <h1>
+            Accepted List
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 @endsection

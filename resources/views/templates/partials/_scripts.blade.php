@@ -8,6 +8,8 @@
 </script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('assets/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<!-- Calendar -->
+<script src="{{ asset('assets/plugins/calendar/zabuto_calendar.js') }}"></script>
 <!-- Morris.js charts -->
 <script src="{{ asset('assets/bower_components/raphael/raphael.min.js') }}"></script>
 <script src="{{ asset('assets/bower_components/morris.js/morris.min.js') }}"></script>
@@ -29,6 +31,9 @@
 <script src="{{ asset('assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->
 <script src="{{ asset('assets/bower_components/fastclick/lib/fastclick.js') }}"></script>
+<!-- DataTables -->
+<script src="{{ asset('assets/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>  
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -36,3 +41,11 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
 <script src="{{ asset('assets/plugins/iCheck/icheck.min.js') }}"></script>
+
+<script>
+  $(function () {
+    $('#example1').DataTable({
+      "dom": '<"toolbar">frtip'
+    });
+  });
+</script>

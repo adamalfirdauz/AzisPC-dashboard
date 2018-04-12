@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 |   berikut nilai variabel $active:
 |   Dashboard = 0;
 |   Manage staff = 1 s.d 5;
-|   Order = 11 s.d 16;
+|   Order = 11 s.d 16; 
 */
 
 Route::prefix('staff')->name('staff.')->group(function() {

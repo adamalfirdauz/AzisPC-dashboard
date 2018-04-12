@@ -11,10 +11,15 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{ asset('assets/bower_components/Ionicons/css/ionicons.min.css') }}">
     <!-- Theme style -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">    
     <link rel="stylesheet" href="{{ asset('assets/dist/css/AdminLTE.min.css') }}">
+
+    {{--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">  --}}
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{ asset('assets/dist/css/skins/_all-skins.min.css') }}">
+    <!-- Calendar Plugin -->
+    <link rel="stylesheet" href="{{ asset('assets/plugins/calendar/zabuto_calendar.css') }}">
     <!-- Morris chart -->
     <link rel="stylesheet" href="{{ asset('assets/bower_components/morris.js/morris.css') }}">
     <!-- jvectormap -->
@@ -26,8 +31,9 @@
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/iCheck/square/blue.css') }}">
-    @yield('style')
-
+    <!-- Data Tables -->
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+  
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

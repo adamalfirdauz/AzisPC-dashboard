@@ -1,0 +1,163 @@
+.pict {
+    padding: 1rem 2rem;
+}
+
+// Modal modalan
+
+.modal {
+    .modal-title {
+        line-height: 1;
+    }
+
+    .close {
+        margin-top: -23px;
+    }
+
+    .modal-dialog {
+        width: 1000px;
+    }
+
+    #modalRow {
+        margin-bottom: 12px;
+    }
+
+    #modalInfo {
+        color: rgb(139, 139, 139);        
+    }
+
+    #modalEntry {
+        margin: 5px;
+    }
+
+    .modal-footer {
+        #cancel {
+            background-color: #F92900;
+            border-color: transparent;
+        }
+
+        #accept {
+            background-color: #0DC902;
+            border-color: transparent;
+        }
+    }
+}
+
+// Panel-panelan
+#callout-dash {
+    background-color: rgb(1, 204, 1);
+    color: white;
+}
+
+.panel {
+    small {
+        margin-left: 5px;
+        font-size: 11px;
+    }
+    h1 {
+        margin: 6px 20px 0px 25px;
+        font-size: 50px;
+    }
+    .text {
+        h3 {
+            margin-bottom: 0px;
+            margin-top: 13px;
+        }
+    
+        #date {
+            font-size: 12px;
+            color: rgb(139, 139, 139);
+        }
+
+        #due-date {
+            font-size: 12px;
+            color: red;
+        }
+    
+        #productName {
+            font-size: 15px;
+            color: rgb(128, 128, 128);
+        }
+    
+        #detailbtn {
+            margin-top: -62px;
+            width: 100px;
+        }
+    }
+}
+
+
+.small-box {
+    .icon {
+        position: absolute;
+        top: -10px;
+        right: 10px;
+        z-index: 0;
+        font-size: 80px;
+    }
+}
+
+.bg-yellow {
+    background-color: #f1e101 !important;
+}
+
+.bg-green {
+    background-color: #00f836 !important;
+}
+
+
+// Calendar
+
+#calendar {
+    
+}
+
+// Bar
+.sidebar{
+    position: fixed;
+    overflow-x: hidden;
+    z-index: 1;
+    top: 60px;
+    left: 1px;
+    width: 228px;
+}
+
+.main-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.main-header {
+    .logo {
+        position: fixed;
+    }
+}
+
+// Button
+.table {
+    .archive-detail {
+        -webkit-border-radius: 5;
+        -moz-border-radius: 5;
+        border-radius: 5px;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 12px;
+        background: #00b83d;
+        padding: 3px 20px 3px 20px;
+        text-decoration: none;
+    }
+    .archive-detail:hover {
+        background: #1cbd54;
+        text-decoration: none;
+    }
+}
+
+// Section
+.content-header {
+    margin-top: 50px;
+}
+.content {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
