@@ -34,6 +34,7 @@ Route::prefix('staff')->name('staff.')->group(function() {
 Route::prefix('order')->name('order.')->group(function() {
     Route::get('/', 'OrderController@index')->name('index');
     Route::get('waiting', 'OrderController@waitingList')->name('waiting');
+    Route::post('ambilBarang/', 'OrderController@ambilBarang')->name('ambilBarang');
     Route::get('accepted', 'OrderController@acceptedList')->name('accepted');
     Route::get('working', 'OrderController@working')->name('working');
     Route::get('finish', 'OrderController@finish')->name('finish');
