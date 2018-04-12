@@ -43,38 +43,22 @@
                                 <div id="carouselImage" class="carousel slide" data-ride="carousel">
                                     <ol class="carousel-indicators">
                                         <li data-target="#carouselImage" data-slide-to="0" class="active"></li>
-                                        <li data-target="#carouselImage" data-slide-to="1"></li>
-                                        <li data-target="#carouselImage" data-slide-to="2"></li>
                                     </ol>
                                     <div class="carousel-inner">
                                         <div class="item active">
-                                            <img class="d-block w-100" src="/assets/dist/img/gambar.jpg" alt="First slide" style="width:500px">
-                                        </div>
-                                        <div class="item">
-                                            <img class="d-block w-100" src="/assets/dist/img/photo1.png" alt="Second slide" style="width:500px">
-                                        </div>
-                                        <div class="item">
-                                            <img class="d-block w-100" src="/assets/dist/img/photo2.png" alt="Third slide" style="width:500px">
+                                            <img class="d-block w-100" style="height: 400px" src="{{asset('storage/'.$item->foto)}}" alt="First slide" style="width:500px">
                                         </div>
                                     </div>
-                                    <a class="carousel-control-prev" href="carouselImage" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next" href="carouselImage" role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
                                 </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="row" id="modalRow">
                                 <span id="modalInfo">Pemilik</span>
-                                <h3 id="modalEntry">Ibro Ibrahim</h3>
+                                <h3 id="modalEntry">{{App\User::where('id', '=', $item->user_id)->first()->name}}</h3>
                             </div>
                             <div class="row" id="modalRow">
                                 <span id="modalInfo">Keluhan</span>
-                                <h4 id="modalEntry">Layar laptop menjadi hitam legam</h4> 
+                                <h4 id="modalEntry">{{$item->keluhan}}</h4> 
                             </div>
                             <div class="row" id="modalRow">
                                 <p id="modalInfo">Kelengkapan</p>
@@ -102,12 +86,12 @@
                                 </div>
                             </div>
                             <div class="row" id="modalRow">
-                                <span id="modalInfo">Jenis Servis</span>
-                                <h4 id="modalEntry">Ganti LCD</h4> 
+                                <span id="modalInfo">Tipe Kerusakan</span>
+                                <h4 id="modalEntry">{{$item->tipeKerusakan}}</h4> 
                             </div>         
                             <div class="row" id="modalRow">
                                 <span id="modalInfo">Alamat Penjemputan</span>
-                                <h4 id="modalEntry">Jalan Babakan Lebak No.8 RT.10, Kabupaten Bogor</h4>     
+                                <h4 id="modalEntry">{{App\User::where('id', '=', $item->user_id)->first()->alamat}}</h4>     
                             </div>                    
                         </div>
                     </div>
