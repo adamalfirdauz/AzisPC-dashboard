@@ -15,14 +15,15 @@
 
     .modal-dialog {
         width: 1000px;
-    }
+    }  
 
     #modalRow {
         margin-bottom: 12px;
     }
 
     #modalInfo {
-        color: rgb(139, 139, 139);        
+        color: rgb(139, 139, 139);
+        display: block;        
     }
 
     #modalEntry {
@@ -38,8 +39,29 @@
         #accept {
             background-color: #0DC902;
             border-color: transparent;
+            padding: 1vw;
         }
     }
+
+    .modal-body {
+        padding-left: 3.5vw;
+        
+        .form_acc {
+            #formHari {
+                width: 26%;
+                display: inline;
+            }
+
+            label {
+                display: inline-block;
+                padding-left: 9px;
+            }
+        }
+    }
+}
+
+div#modal_acc.modal-dialog {
+    width: 500px !important;
 }
 
 // Panel-panelan
@@ -77,10 +99,18 @@
             font-size: 15px;
             color: rgb(128, 128, 128);
         }
-    
-        #detailbtn {
-            margin-top: -62px;
-            width: 100px;
+    }
+    .buttonConf {
+        display: block;
+        margin: 3% 0;
+        #confirmation {
+            display: inline-block;
+            margin-left: 10px;
+            width: 7vw;
+        }
+        #confirmationDiag {
+            display: inline-block;
+            width: 7vw;
         }
     }
 }
@@ -151,6 +181,8 @@
         text-decoration: none;
     }
 }
+
+
 
 // Section
 .content-header {

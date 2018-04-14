@@ -20,6 +20,7 @@
 
 .modal #modalInfo {
   color: #8b8b8b;
+  display: block;
 }
 
 .modal #modalEntry {
@@ -34,6 +35,25 @@
 .modal .modal-footer #accept {
   background-color: #0DC902;
   border-color: transparent;
+  padding: 1vw;
+}
+
+.modal .modal-body {
+  padding-left: 3.5vw;
+}
+
+.modal .modal-body .form_acc #formHari {
+  width: 26%;
+  display: inline;
+}
+
+.modal .modal-body .form_acc label {
+  display: inline-block;
+  padding-left: 9px;
+}
+
+div#modal_acc.modal-dialog {
+  width: 500px !important;
 }
 
 #callout-dash {
@@ -71,9 +91,20 @@
   color: gray;
 }
 
-.panel .text #detailbtn {
-  margin-top: -62px;
-  width: 100px;
+.panel .buttonConf {
+  display: block;
+  margin: 3% 0;
+}
+
+.panel .buttonConf #confirmation {
+  display: inline-block;
+  margin-left: 10px;
+  width: 7vw;
+}
+
+.panel .buttonConf #confirmationDiag {
+  display: inline-block;
+  width: 7vw;
 }
 
 .small-box .icon {

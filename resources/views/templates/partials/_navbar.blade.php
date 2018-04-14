@@ -1,7 +1,7 @@
   <header class="main-header">
-    <a href="index2.html" class="logo">
+    <a href="{{ route('dashboard') }}" class="logo">
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>Computer</b>Store</span>
     </a>
     <nav class="navbar navbar-fixed-top">
       <div class="navbar-custom-menu">

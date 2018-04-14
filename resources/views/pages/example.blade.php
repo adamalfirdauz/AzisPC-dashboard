@@ -12,7 +12,7 @@
             <div class="col-md-12">
                 <div class="callout" id="callout-dash">
                     {{--  <div class="panel-body" id="homePanel">  --}}
-                        Basic panel example
+                        <b>Selamat Datang di Computer Store</b>
                     {{--  </div>  --}}
                 </div>
                 <div class="col-md-4">
