@@ -106,11 +106,17 @@ div#modal_acc.modal-dialog {
         #confirmation {
             display: inline-block;
             margin-left: 10px;
-            width: 7vw;
+            width: auto;
         }
         #confirmationDiag {
             display: inline-block;
             width: 7vw;
+        }
+        #delete_button {
+            display: inline-block;
+            margin-left: 10px;
+            width: auto;
+            font-size: 20px;
         }
     }
 }

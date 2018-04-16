@@ -99,12 +99,19 @@ div#modal_acc.modal-dialog {
 .panel .buttonConf #confirmation {
   display: inline-block;
   margin-left: 10px;
-  width: 7vw;
+  width: auto;
 }
 
 .panel .buttonConf #confirmationDiag {
   display: inline-block;
   width: 7vw;
+}
+
+.panel .buttonConf #delete_button {
+  display: inline-block;
+  margin-left: 10px;
+  width: auto;
+  font-size: 20px;
 }
 
 .small-box .icon {

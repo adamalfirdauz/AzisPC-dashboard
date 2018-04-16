@@ -23,6 +23,10 @@
                                 <p id="productName">{{$item->nama}}</p>
                             </div>
                             <div class="buttonConf col-sm-3">
+                                {{-- <button type="button" class="btn btn-danger" id="confirmation" disabled>Pelanggan Membatalkan</button> --}}
+                                {{-- <button type="button" class="btn btn-danger fa fa-trash-o" id="delete_button"></button> --}}
+                                {{-- <button type="button" class="btn btn-success" id="confirmation">Kerjakan Sekarang</button> --}}
+                                {{-- <button type="button" class="btn" id="confirmation" disabled>Menunggu Konfirmasi</button> --}}
                                 <button type="button" class="btn btn-primary" id="confirmation" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">Konfirmasi</button>
                             </div>
                         </div>
@@ -54,7 +58,7 @@
                                     </div>
                                     <div class="row" id="modalRow">
                                         <span id="modalInfo">Harga</span>
-                                        <input class="form-control" type="number" placeholder="Rupiah" id="formHari">
+                                        <input class="form-control" type="text" placeholder="Rupiah" id="formHari" onkeyup="this.value=tambah_comma(this.value);">
                                     </div>
                                     <div class="row" id="modalRow">
                                         <span id="modalInfo">Tipe Kerusakan</span>

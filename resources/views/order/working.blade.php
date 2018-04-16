@@ -24,57 +24,13 @@
                                 <img src="/assets/dist/img/gambar.jpg" height="80">
                             </div>
                         </div>
-                        <div class="text col-sm-8">
+                        <div class="text col-sm-6">
                             <h3>Ibro Ibrahim</h3>
                             <p id="due-date">Selesai tanggal : 17 April 2018</p>
                             <p id="productName">Laptop ACER (Awas CEpat Rusak)</p>
-                            <button type="button" class="btn btn-primary pull-right" id="detailbtn" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>
                         </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="row">
-                        <div class="col-sm-1">
-                            <div>
-                                <small>No. Service</small>
-                            </div>
-                            <div>
-                                <h1>20</h1>
-                            </div> 
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="pict">
-                                <img src="/assets/dist/img/gambar.jpg" height="80">
-                            </div>
-                        </div>
-                        <div class="text col-sm-8">
-                            <h3>Ibro Ibrahim</h3>
-                            <p id="due-date">Selesai tanggal : 17 April 2018</p>
-                            <p id="productName">Laptop ACER (Awas CEpat Rusak)</p>
-                            <button type="button" class="btn btn-primary pull-right" id="detailbtn" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="row">
-                        <div class="col-sm-1">
-                            <div>
-                                <small>No. Service</small>
-                            </div>
-                            <div>
-                                <h1>30</h1>
-                            </div> 
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="pict">
-                                <img src="/assets/dist/img/gambar.jpg" height="80">
-                            </div>
-                        </div>
-                        <div class="text col-sm-8">
-                            <h3>Ibro Ibrahim</h3>
-                            <p id="due-date">Selesai tanggal : 17 April 2018</p>
-                            <p id="productName">Laptop ACER (Awas CEpat Rusak)</p>
-                            <button type="button" class="btn btn-primary pull-right" id="detailbtn" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>
+                        <div class="buttonConf col-sm-2">
+                            <button type="button" class="btn btn-primary" id="confirmation" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>
                         </div>
                     </div>
                 </div>
