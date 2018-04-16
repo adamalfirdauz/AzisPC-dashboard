@@ -7,7 +7,7 @@
         </h1>
     </section>
     <section class="content">
-        @foreach (App\Orders::where('status', '=',2)->orWhere('status', '=',3)->get() as $item)
+        @foreach (App\Orders::whereBetween('status', [2, 5])->get() as $item)
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
@@ -23,15 +23,24 @@
                                 <p id="productName">{{$item->nama}}</p>
                             </div>
                             <div class="buttonConf col-sm-3">
-                                <button type="button" class="btn btn-danger" id="confirmation" disabled>Pelanggan Membatalkan</button>
-                                <button type="button" class="btn btn-danger fa fa-trash-o" id="delete_button"></button>
-                                {{-- <button type="button" class="btn btn-success" id="confirmation">Kerjakan Sekarang</button> --}}
-                                {{-- <button type="button" class="btn btn-primary" id="confirmation" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">Konfirmasi</button> --}}
-                                {{-- @if ($item->status == 2)
+                                @if ($item->status == 2)
                                     <button type="button" class="btn btn-primary" id="confirmation" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">Konfirmasi</button>
-                                @else
+                                @elseif ($item->status == 3)
                                     <button type="button" class="btn" id="confirmation" disabled>Menunggu Konfirmasi</button>
-                                @endif --}}
+                                @elseif ($item->status == 4)
+                                    <form action="{{route('order.hapusOrder')}}" method="POST">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" value="{{$item->id}}" name="id">
+                                        <button type="button" class="btn btn-danger" id="confirmation" disabled>Pelanggan Membatalkan</button>
+                                        <button type="submit" class="btn btn-danger fa fa-trash-o" id="delete_button"></button>
+                                    </form>
+                                @else
+                                    <form action="{{route('order.mulaiKerjakan')}}" method="POST">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" value="{{$item->id}}" name="id">
+                                        <button type="submit" class="btn btn-success" id="confirmation">Kerjakan Sekarang</button>
+                                    </form>
+                                @endif
                             </div>
                         </div>
                     </div>

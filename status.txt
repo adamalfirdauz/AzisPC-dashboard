@@ -1,0 +1,5 @@
+1. Order dimulai, admin ambil ke tempat user
+2. Baru masuk tahap diagnosa, admin periksa barang
+3. Selesai diagnosa oleh admin, menunggu respon user
+4. User memberikan respon Tolak
+5. User memberikan respon Terima
