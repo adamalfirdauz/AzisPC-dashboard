@@ -58,4 +58,22 @@ class OrderController extends Controller
         }
         return back()->with('danger', 'Barang tidak ada.');
     }
+    public function diagnosa(Request $request){
+        $order = Orders::where('id', '=', $request->id)->first();
+        $order->durasi = $request->durasi;
+        $order->harga = $request->harga;
+        $order->tipeKerusakan = $request->tipeKerusakan;
+        $order->status = 3;
+        if(!$order->save()){
+            return back()->with('danger', 'Internal server error, silahkan cobalagi.');
+        }
+        else{
+            return back()->with('success', 'Diagnosa berhasil dikirim.');
+        }
+        // $order->update([
+        //     'durasi' => $request->durasi,
+        //     'harga' => $request->harga,
+        //     'tipeKerusakan' => $request->tipeKerusakan
+        // ]);
+    }
 }
