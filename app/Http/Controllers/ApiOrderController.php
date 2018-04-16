@@ -82,7 +82,7 @@ class ApiOrderController extends Controller
             if ($order->foto) {
                 Storage::delete($order->foto);
             }
-            $foto = $request->file('foto')->store('users/order'.Auth::user()->email);
+            $foto = $request->file('foto')->store('users/order/'.Auth::user()->email);
             $order->foto = $foto;
         }
         $order->save();

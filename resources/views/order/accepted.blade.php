@@ -7,7 +7,7 @@
         </h1>
     </section>
     <section class="content">
-        @foreach (App\Orders::where('status', '=', 2)->get() as $item)
+        @foreach (App\Orders::where('status', '=',2)->orWhere('status', '=',3)->get() as $item)
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
@@ -23,11 +23,15 @@
                                 <p id="productName">{{$item->nama}}</p>
                             </div>
                             <div class="buttonConf col-sm-3">
-                                {{-- <button type="button" class="btn btn-danger" id="confirmation" disabled>Pelanggan Membatalkan</button> --}}
-                                {{-- <button type="button" class="btn btn-danger fa fa-trash-o" id="delete_button"></button> --}}
+                                <button type="button" class="btn btn-danger" id="confirmation" disabled>Pelanggan Membatalkan</button>
+                                <button type="button" class="btn btn-danger fa fa-trash-o" id="delete_button"></button>
                                 {{-- <button type="button" class="btn btn-success" id="confirmation">Kerjakan Sekarang</button> --}}
-                                {{-- <button type="button" class="btn" id="confirmation" disabled>Menunggu Konfirmasi</button> --}}
-                                <button type="button" class="btn btn-primary" id="confirmation" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">Konfirmasi</button>
+                                {{-- <button type="button" class="btn btn-primary" id="confirmation" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">Konfirmasi</button> --}}
+                                {{-- @if ($item->status == 2)
+                                    <button type="button" class="btn btn-primary" id="confirmation" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">Konfirmasi</button>
+                                @else
+                                    <button type="button" class="btn" id="confirmation" disabled>Menunggu Konfirmasi</button>
+                                @endif --}}
                             </div>
                         </div>
                     </div>
@@ -50,28 +54,26 @@
                                     <span id="modalInfo">Pemilik</span>
                                     <h3 id="modalEntry">{{App\User::where('id', '=', $item->user_id)->first()->name}}</h3>
                                 </div>
-                                <form class="form_acc" action="">
+                                <form class="form_acc" action="{{route('order.diagnosa')}}" method="POST">
+                                    {{ csrf_field() }}
                                     <div class="row" id="modalRow">
                                         <span id="modalInfo">Lama Pengerjaan</span>
-                                        <input class="form-control" type="number" placeholder="Hitungan Hari" id="formHari">
+                                        <input class="form-control" type="number" placeholder="Hitungan Hari" id="formHari" name="durasi"
                                         <label>Hari</label>
                                     </div>
                                     <div class="row" id="modalRow">
                                         <span id="modalInfo">Harga</span>
-                                        <input class="form-control" type="text" placeholder="Rupiah" id="formHari" onkeyup="this.value=tambah_comma(this.value);">
+                                        <input class="form-control" type="text" placeholder="Rupiah" id="formHari" name="harga" onkeyup="this.value=tambah_comma(this.value);">
                                     </div>
                                     <div class="row" id="modalRow">
                                         <span id="modalInfo">Tipe Kerusakan</span>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="tipeKerusakan"></textarea>
                                     </div>                             
-                                </form>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        {{-- <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancel">Batalkan</button> --}}
-                        <form action="{{route('order.ambilBarang')}}" method="post">
-                            {{ csrf_field() }}
+                        {{-- <form action="{{route('order.ambilBarang')}}" method="post"> --}}
                             <input type="hidden" name="id" value="{{$item->id}}">
                             <button type="submit" class="btn btn-primary btn-block" id="accept"><b>Konfirmasi Hasil</b></button>
                         </form>
