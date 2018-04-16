@@ -23,15 +23,15 @@
                                 <p id="productName">{{$item->nama}}</p>
                             </div>
                             <div class="buttonConf col-sm-3">
-                                <button type="button" class="btn btn-danger" id="confirmation" disabled>Pelanggan Membatalkan</button>
-                                <button type="button" class="btn btn-danger fa fa-trash-o" id="delete_button"></button>
+                                {{-- <button type="button" class="btn btn-danger" id="confirmation" disabled>Pelanggan Membatalkan</button>
+                                <button type="button" class="btn btn-danger fa fa-trash-o" id="delete_button"></button> --}}
                                 {{-- <button type="button" class="btn btn-success" id="confirmation">Kerjakan Sekarang</button> --}}
                                 {{-- <button type="button" class="btn btn-primary" id="confirmation" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">Konfirmasi</button> --}}
-                                {{-- @if ($item->status == 2)
+                                @if ($item->status == 2)
                                     <button type="button" class="btn btn-primary" id="confirmation" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">Konfirmasi</button>
                                 @else
                                     <button type="button" class="btn" id="confirmation" disabled>Menunggu Konfirmasi</button>
-                                @endif --}}
+                                @endif
                             </div>
                         </div>
                     </div>
