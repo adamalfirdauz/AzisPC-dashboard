@@ -67,15 +67,15 @@
                                     {{ csrf_field() }}
                                     <div class="row" id="modalRow">
                                         <span id="modalInfo">Lama Pengerjaan</span>
-                                        <input class="form-control" type="number" placeholder="Hitungan Hari" id="formHari" name="durasi"
+                                        <input class="form-control" type="number" placeholder="Hitungan Hari" id="formHari" name="durasi"/>
                                         <label>Hari</label>
                                     </div>
                                     <div class="row" id="modalRow">
                                         <span id="modalInfo">Harga</span>
                                         <input class="form-control" type="text" placeholder="Rupiah" id="formHari" name="harga" onkeyup="this.value=tambah_comma(this.value);">
-                                    </div>
+                                    </div>  
                                     <div class="row" id="modalRow">
-                                        <span id="modalInfo">Tipe Kerusakan</span>
+                                        <span id="modalInfo">Hasil Diagnosa</span>
                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="tipeKerusakan"></textarea>
                                     </div>                             
                             </div>

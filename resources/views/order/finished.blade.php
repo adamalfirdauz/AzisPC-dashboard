@@ -3,126 +3,82 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Finished
+            Pekerjaan Selesai
         </h1>
     </section>
     <section class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="row">
-                        <div class="col-sm-1">
-                            <div>
-                                <small>No. Service</small>
-                            </div>
-                            <div>
-                                <h1>1</h1>
-                            </div> 
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="pict">
-                                <img src="/assets/dist/img/gambar.jpg" height="80">
-                            </div>
-                        </div>
-                        <div class="text col-sm-6">
-                            <h3>Ibro Ibrahim</h3>
-                            <p id="date">1 Hari yang lalu, 08.30</p>
-                            <p id="productName">Laptop ACER (Awas CEpat Rusak)</p>
-                        </div>
-                        <div class="buttonConf col-sm-2">
-                            <button type="button" class="btn btn-primary" id="confirmation" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>
-                        </div>
+                <div class="box">
+                    {{--  <div class="box-header">
+                      <h3 class="box-title">Archive Finished Work</h3>
+                    </div>  --}}
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Pemilik</th>
+                                <th>Laptop</th>
+                                <th>Jenis Service</th>
+                                <th>Tanggal Selesai</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>21</td>
+                                <td>Taqy Malik</td>
+                                <td>Huawei Matebook X Pro</td>
+                                <td>Dibersihkan</td>
+                                <td>20/11/2017</td>
+                                <td align="center"><button class="finished_button" type="submit" data-toggle="modal" data-target="#exampleModalCenter">Detail</button></td>
+                            </tr>
+                        </tbody>
+                      </table>
                     </div>
+                    <!-- /.box-body -->
                 </div>
             </div>
             {{--  Modal  --}}
 
-            <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document" id="modal_acc">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h3 class="modal-title" id="exampleModalLongTitle">Detail</h3>
+                            <h3 class="modal-title" id="exampleModalLongTitle">Hasil Diagnosa</h3>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-sm-6">
-                                        <div id="carouselImage" class="carousel slide" data-ride="carousel">
-                                            <ol class="carousel-indicators">
-                                                <li data-target="#carouselImage" data-slide-to="0" class="active"></li>
-                                                <li data-target="#carouselImage" data-slide-to="1"></li>
-                                                <li data-target="#carouselImage" data-slide-to="2"></li>
-                                            </ol>
-                                            <div class="carousel-inner">
-                                                <div class="item active">
-                                                    <img class="d-block w-100" src="/assets/dist/img/gambar.jpg" alt="First slide" style="width:500px">
-                                                </div>
-                                                <div class="item">
-                                                    <img class="d-block w-100" src="/assets/dist/img/photo1.png" alt="Second slide" style="width:500px">
-                                                </div>
-                                                <div class="item">
-                                                    <img class="d-block w-100" src="/assets/dist/img/photo2.png" alt="Third slide" style="width:500px">
-                                                </div>
-                                            </div>
-                                            <a class="carousel-control-prev" href="carouselImage" role="button" data-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="carousel-control-next" href="carouselImage" role="button" data-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                        </div>
-                                </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-11 isian">
                                     <div class="row" id="modalRow">
-                                        <span id="modalInfo">Pemilik</span>
-                                        <h3 id="modalEntry">Ibro Ibrahim</h3>
+                                        <span id="modalInfo">Nama Barang</span>
+                                        <h3 id="modalEntry">Nama</h3>
                                     </div>
                                     <div class="row" id="modalRow">
                                         <span id="modalInfo">Keluhan</span>
-                                        <h4 id="modalEntry">Layar laptop menjadi hitam legam</h4> 
+                                        <h4 id="modalEntry">Rusak</h4>
                                     </div>
                                     <div class="row" id="modalRow">
-                                        <p id="modalInfo">Kelengkapan</p>
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label><input type="checkbox" value="">Charger</label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label><input type="checkbox" value="">CD/Driver</label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label><input type="checkbox" value="">Mouse</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label><input type="checkbox" value="">Tas</label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label><input type="checkbox" value="">Lainnya</label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label><input type="checkbox" value="">Lainnya</label>    
-                                            </div>
-                                        </div>
-                                    </div>
+                                        <span id="modalInfo">Hasil Diagnosa</span>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="tipeKerusakan" disabled>Aku isinya</textarea>
+                                    </div>        
                                     <div class="row" id="modalRow">
-                                        <span id="modalInfo">Jenis Servis</span>
-                                        <h4 id="modalEntry">Ganti LCD</h4> 
-                                    </div>         
-                                    <div class="row" id="modalRow">
-                                        <span id="modalInfo">Alamat Penjemputan</span>
-                                        <h4 id="modalEntry">Jalan Babakan Lebak No.8 RT.10, Kabupaten Bogor</h4>     
-                                    </div>                    
+                                        <span id="modalInfo">Harga</span>
+                                        <h4 id="modalEntry">Rp.</h4>
+                                    </div>                             
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" style="width:100px" id="accept">Simpan</button>
+                            {{-- <form action="{{route('order.ambilBarang')}}" method="post"> --}}
+                                <input type="hidden" name="id" value="">
+                                <button type="submit" class="btn btn-primary btn-block" id="accept"><b>Barang Sudah Diambil</b></button>
+                            </form>
                         </div>
                     </div>
                 </div>
