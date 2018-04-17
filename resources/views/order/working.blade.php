@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-           Working Order
+           Sedang Dikerjakan
         </h1>
     </section>
     <section class="content">

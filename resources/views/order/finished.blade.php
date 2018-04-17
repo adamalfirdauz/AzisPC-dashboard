@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Finished
+            Pekerjaan Selesai
         </h1>
     </section>
     <section class="content">

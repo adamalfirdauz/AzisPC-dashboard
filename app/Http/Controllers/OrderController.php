@@ -70,10 +70,24 @@ class OrderController extends Controller
         else{
             return back()->with('success', 'Diagnosa berhasil dikirim.');
         }
-        // $order->update([
-        //     'durasi' => $request->durasi,
-        //     'harga' => $request->harga,
-        //     'tipeKerusakan' => $request->tipeKerusakan
-        // ]);
+    }
+    public function mulaiKerjakan(Request $request){
+        $order = Orders::where('id', '=', $request->id)->first();
+        $order->status = 6;
+        if(!$order->save()){
+            return back()->with('danger', 'Internal server error, silahkan cobalagi.');
+        }
+        else{
+            return back()->with('success', 'Order masuk tahap pengerjaan.');
+        }
+    }
+    public function hapusOrder(Request $request){
+        $order = Orders::where('id', '=', $request->id)->first();
+        if(!$order->delete()){
+            return back()->with('danger', 'Internal server error, silahkan cobalagi.');
+        }
+        else{
+            return back()->with('success', 'Order berhasil dihapus.');
+        }
     }
 }

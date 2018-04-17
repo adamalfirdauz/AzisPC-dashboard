@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Archive Finished Work
+            Arsip Pekerjaan Selesai
         </h1>
     </section>
     <section class="content">
@@ -36,47 +36,13 @@
                                 <td align="center"><button class="archive-detail" type="submit">Detail</button></td>
                             </tr>
                             <tr>
-                                <td>2</td>
-                                <td>Ibro Ibrohim</td>
-                                <td>Asus ROG GTX200</td>
-                                <td>Bongkar Pasang</td>
+                                <td>21</td>
+                                <td>Taqy Malik</td>
+                                <td>Huawei Matebook X Pro</td>
+                                <td>Dibersihkan</td>
                                 <td>20/11/2017</td>
-                                <td align="center"><button class="archive-detail" type="submit">Detail</button></td>                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Ibro Ibrohim</td>
-                                <td>Asus ROG GTX200</td>
-                                <td>Bongkar Pasang</td>
-                                <td>20/11/2017</td>
-                                <td align="center"><button class="archive-detail" type="submit">Detail</button></td>                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Ibro Ibrohim</td>
-                                <td>Asus ROG GTX200</td>
-                                <td>Bongkar Pasang</td>
-                                <td>20/11/2017</td>
-                                <td align="center"><button class="archive-detail" type="submit">Detail</button></td>                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Ibro Ibrohim</td>
-                                <td>Asus ROG GTX200</td>
-                                <td>Bongkar Pasang</td>
-                                <td>20/11/2017</td>
-                                <td align="center"><button class="archive-detail" type="submit">Detail</button></td>                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Ibro Ibrohim</td>
-                                <td>Asus ROG GTX200</td>
-                                <td>Bongkar Pasang</td>
-                                <td>20/11/2017</td>
-                                <td align="center"><button class="archive-detail" type="submit">Detail</button></td>                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>Ibro Ibrohim</td>
-                                <td>Asus ROG GTX200</td>
-                                <td>Bongkar Pasang</td>
-                                <td>20/11/2017</td>
-                                <td align="center"><button class="archive-detail" type="submit">Detail</button></td>                            </tr>
+                                <td align="center"><button class="archive-detail" type="submit">Detail</button></td>
+                            </tr>
                         </tbody>
                       </table>
                     </div>
