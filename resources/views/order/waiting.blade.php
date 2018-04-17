@@ -14,7 +14,7 @@
                         <div class="row">
                             <div class="col-sm-2">
                                 <div class="pict">
-                                <img src="{{asset('storage/'.$item->foto)}}" height="80">
+                                    <img src="{{asset('storage/'.$item->foto)}}" height="80">
                                 </div>
                             </div>
                             <div class="text col-sm-7">
@@ -24,7 +24,7 @@
                             </div>
                             <div class="buttonConf col-sm-3">
                                 {{-- <button type="button" class="btn btn-danger" id="confirmation" data-target="">Tolak</button> --}}
-                                <button type="button" class="btn btn-primary" id="confirmation" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">Detail</button>
+                                <button type="button" class="btn btn-primary" id="confirmation" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">Detail Barang</button>
                             </div>
                         </div>
                     </div>

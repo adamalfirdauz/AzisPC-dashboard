@@ -178,12 +178,29 @@ div#modal_acc.modal-dialog {
         font-family: Arial;
         color: #ffffff;
         font-size: 12px;
-        background: #00b83d;
+        background: #428bca;
         padding: 3px 20px 3px 20px;
         text-decoration: none;
     }
     .archive-detail:hover {
-        background: #1cbd54;
+        background: #13436d;
+        text-decoration: none;
+    }
+
+    .finished_button {
+        -webkit-border-radius: 5;
+        -moz-border-radius: 5;
+        border-radius: 5px;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 12px;
+        background: #0DC902;
+        padding: 3px 20px 3px 20px;
+        text-decoration: none;
+    }
+
+    .finished_button:hover {
+        background: rgb(8, 126, 2);
         text-decoration: none;
     }
 }
