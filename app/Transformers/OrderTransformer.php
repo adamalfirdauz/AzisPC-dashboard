@@ -37,6 +37,7 @@ class OrderTransformer extends TransformerAbstract
             'longitude'     => $order->longitude,
             'langitude'     => $order->langitude,
             'foto'          => $foto,
+            'durasi'        => $order->durasi,
         ];
     }
 }
