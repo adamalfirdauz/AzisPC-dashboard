@@ -18,7 +18,7 @@ class OrderController extends Controller
     public function index(){
         $user = Auth::user();
         $active = 11;
-        return view('order.index', compact('active', 'user'));
+        return redirect('order/waiting');
     }
     public function waitingList(){
         $user = Auth::user();
@@ -48,13 +48,16 @@ class OrderController extends Controller
     public function ambilBarang(Request $request){
         $order = Orders::where('id', '=', $request->id)->first();
         if($order->status == 1){
-            $success = $order->update([
-                'status' => 2
-            ]);
-            if($success){
-                return back()->with('success', 'Barang telah diambil, masuk ke tahap diagnosa.');
+            // $success = $order->update([
+            //     'status' => 2,
+            //     'datePenjemputan' => date('Y-m-d H:i:s'),
+            // ]);
+            $order->status = 2;
+            $order->datePenjemputan = date('Y-m-d H:i:s');
+            if(!$order->save()){
+                return back()->with('danger', 'Gagal mengambil barang, silahkan coba lagi.');
             }
-            return back()->with('danger', 'Gagal mengambil barang, silahkan coba lagi.');
+            return back()->with('success', 'Barang telah diambil, masuk ke tahap diagnosa.');
         }
         return back()->with('danger', 'Barang tidak ada.');
     }
@@ -64,6 +67,7 @@ class OrderController extends Controller
         $order->harga = $request->harga;
         $order->tipeKerusakan = $request->tipeKerusakan;
         $order->status = 3;
+        $order->dateDiagnosa = date('Y-m-d H:i:s');
         if(!$order->save()){
             return back()->with('danger', 'Internal server error, silahkan cobalagi.');
         }
@@ -74,6 +78,7 @@ class OrderController extends Controller
     public function mulaiKerjakan(Request $request){
         $order = Orders::where('id', '=', $request->id)->first();
         $order->status = 6;
+        $order->dateMulaiReparasi = date('Y-m-d H:i:s');
         if(!$order->save()){
             return back()->with('danger', 'Internal server error, silahkan cobalagi.');
         }

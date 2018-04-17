@@ -19,25 +19,35 @@ class OrderTransformer extends TransformerAbstract
         {
             $foto = 'storage/'.$foto;
         }
+        $fotoReparasi = $orders[0]->fotoReparasi;
+        if($fotoReparasi != null)
+        {
+            $fotoReparasi = 'storage/'.$fotoReparasi;
+        }
         // dd($orders,$foto);
         return [
-            'id'            => $order->id,
-            'namaBarang'    => $order->nama,
-            'alamat'        => $order->alamat,
-            'hp'            => $user->phone,
-            'user_id'       => $order->user_id,
-            'dateIn'        => $order->dateIn,
-            'dateOut'       => $order->dateOut,
-            'tipeKerusakan' => $order->tipeKerusakan,
-            'keluhan'       => $order->keluhan,
-            'kelengkapan'   => $order->kelengkapan,
-            'status'        => $order->status,
-            'harga'         => $order->harga,
-            'dp'            => $order->dp,
-            'longitude'     => $order->longitude,
-            'langitude'     => $order->langitude,
-            'foto'          => $foto,
-            'durasi'        => $order->durasi,
+            'id'                        => $order->id,
+            'namaBarang'                => $order->nama,
+            'alamat'                    => $order->alamat,
+            'hp'                        => $user->phone,
+            'user_id'                   => $order->user_id,
+            'dateIn'                    => $order->dateIn,
+            'datePenjemputan'           => $order->datePenjemputan,
+            'dateDiagnosa'              => $order->dateDiagnosa,
+            'dateMulaiReparasi'         => $order->dateMulaiReparasi,
+            'dateSelesai'               => $order->dateSelesai,
+            'dateOut'                   => $order->dateOut,
+            'tipeKerusakan'             => $order->tipeKerusakan,
+            'keluhan'                   => $order->keluhan,
+            'kelengkapan'               => $order->kelengkapan,
+            'status'                    => $order->status,
+            'harga'                     => $order->harga,
+            'dp'                        => $order->dp,
+            'longitude'                 => $order->longitude,
+            'langitude'                 => $order->langitude,
+            'foto'                      => $foto,
+            'fotoReparasi'              => $fotoReparasi,
+            'durasi'                    => $order->durasi,
         ];
     }
 }

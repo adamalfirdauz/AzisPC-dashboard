@@ -49,7 +49,7 @@ class ApiOrderController extends Controller
             if ($order->foto) {
                 Storage::delete($order->foto);
             }
-            $foto = $request->file('foto')->store('orders/foto');
+            $foto = $request->file('foto')->store('users/order/'.Auth::user()->email);
             $order->where('id', $order->id)->update([
                 'foto' => $foto
             ]);
@@ -67,15 +67,11 @@ class ApiOrderController extends Controller
         $this->authorize('update', $order);
         $order->nama                = $request->get('namaBarang', $order->nama );
         $order->alamat              = $request->get('alamat', $order->alamat );
-        // $order->user_id             = $request->get('user_id', $order->user_id );
-        // $order->dateIn              = $request->get('dateIn', $order->dateIn );
-        // $order->dateOut             = $request->get('dateOut', $order->dateOut );
         $order->tipeKerusakan       = $request->get('tipeKerusakan', $order->tipeKerusakan );
         $order->keluhan             = $request->get('keluhan', $order->keluhan );
         $order->kelengkapan         = $request->get('kelengkapan', $order->kelengkapan );
         $order->status              = $request->get('status', $order->status );
         $order->harga               = $request->get('harga', $order->harga );
-        // $order->dp                  = $request->get('dp', $order->dp );
         $order->longitude           = $request->get('longitude', $order->longitude );
         $order->langitude           = $request->get('langitude', $order->langitude );
         if ($request->file('foto')) {
@@ -97,7 +93,6 @@ class ApiOrderController extends Controller
     {
         $order = $order->where('user_id', '=', $user_id)->get();
         $order = (object) $order;
-        // dd($order);
         return fractal()
             ->collection($order)
             ->transformWith(new OrderTransformer)
