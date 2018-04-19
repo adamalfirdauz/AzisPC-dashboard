@@ -120,4 +120,15 @@ class OrderController extends Controller
             return back()->with('success', 'Order telah selesai dikerjakan.');
         }
     }
+    public function barangKeluar(Request $request){
+        $order = Orders::where('id', '=', $request->id)->first();
+        $order->status = 8;
+        $order->dateOut = date('Y-m-d H:i:s');
+        if(!$order->save()){
+            return back()->with('danger', 'Internal server error, silahkan coba lagi.');
+        }
+        else{
+            return back()->with('success', 'Barang telah diambil oleh pemilik, transaksi disimpan di Arsip.');
+        }
+    }
 }

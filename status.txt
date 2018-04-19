@@ -4,5 +4,5 @@
 4. User memberikan respon Tolak
 5. User memberikan respon Terima
 6. Produk masuk ke tahap pengerjaan.
-7. Sedang dikerjakan.
-8. Selesai dikerjakan, belum diambil user.
+7. Selesai dikerjakan, belum diambil user.
+8. Arsip, sudah diambil user.
