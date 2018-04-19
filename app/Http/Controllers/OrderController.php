@@ -80,7 +80,7 @@ class OrderController extends Controller
         $order->status = 6;
         $order->dateMulaiReparasi = date('Y-m-d H:i:s');
         if(!$order->save()){
-            return back()->with('danger', 'Internal server error, silahkan cobalagi.');
+            return back()->with('danger', 'Internal server error, silahkan coba lagi.');
         }
         else{
             return back()->with('success', 'Order masuk tahap pengerjaan.');
@@ -89,10 +89,35 @@ class OrderController extends Controller
     public function hapusOrder(Request $request){
         $order = Orders::where('id', '=', $request->id)->first();
         if(!$order->delete()){
-            return back()->with('danger', 'Internal server error, silahkan cobalagi.');
+            return back()->with('danger', 'Internal server error, silahkan coba lagi.');
         }
         else{
             return back()->with('success', 'Order berhasil dihapus.');
+        }
+    }
+    public function uploadFotoService(Request $request){
+        $order = Orders::where('id', '=', $request->id)->first();
+        if ($order->fotoReparasi) {
+            Storage::delete($order->fotoReparasi);
+        }
+        $fotoReparasi = $request->file('fotoReparasi')->store('users/order/reparasi/'.$request->id);
+        $order->fotoReparasi = $fotoReparasi;
+        if(!$order->save()){
+            return back()->with('danger', 'Internal server error, silahkan coba lagi.');
+        }
+        else{
+            return back()->with('success', 'Foto berhasil di upload.');
+        }
+    }
+    public function selesaiDikerjakan(Request $request){
+        $order = Orders::where('id', '=', $request->id)->first();
+        $order->status = 7;
+        $order->dateSelesai = date('Y-m-d H:i:s');
+        if(!$order->save()){
+            return back()->with('danger', 'Internal server error, silahkan coba lagi.');
+        }
+        else{
+            return back()->with('success', 'Order telah selesai dikerjakan.');
         }
     }
 }

@@ -39,6 +39,8 @@ Route::prefix('order')->name('order.')->group(function() {
     Route::post('diagnosa', 'OrderController@diagnosa')->name('diagnosa');
     Route::post('mulaiKerjakan', 'OrderController@mulaiKerjakan')->name('mulaiKerjakan');
     Route::post('hapusOrder', 'OrderController@hapusOrder')->name('hapusOrder');
+    Route::post('uploadFotoService', 'OrderController@uploadFotoService')->name('uploadFotoService');
+    Route::post('selesaiDikerjakan', 'OrderController@selesaiDikerjakan')->name('selesaiDikerjakan');
     Route::get('working', 'OrderController@working')->name('working');
     Route::get('finish', 'OrderController@finish')->name('finish');
     Route::get('archives', 'OrderController@archives')->name('archives');

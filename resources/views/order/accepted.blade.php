@@ -19,7 +19,7 @@
                             </div>
                             <div class="text col-sm-7">
                                 <h3>{{$item->nama}}</h3>
-                                <p id="date">{{$item->created_at}}</p>
+                                <p id="date">{{$item->created_at->diffForHumans()}}</p>
                                 <p id="productName">{{$item->nama}}</p>
                             </div>
                             <div class="buttonConf col-sm-3">
