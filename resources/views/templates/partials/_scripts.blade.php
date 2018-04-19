@@ -70,3 +70,4 @@
 	else return number;
 }
 </script>
+@yield('script')

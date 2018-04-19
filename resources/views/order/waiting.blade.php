@@ -1,5 +1,15 @@
 @extends('templates.dashboard')
 
+@section('style')
+    <style>
+      #map {
+        width: 100%;
+        height: 200px;
+        background-color: grey;
+      }
+    </style>
+@endsection
+
 @section('content')
     <section class="content-header">
         <h1>
@@ -91,11 +101,32 @@
                             <div class="row" id="modalRow">
                                 <span id="modalInfo">Tipe Kerusakan</span>
                                 <h4 id="modalEntry">{{$item->tipeKerusakan}}</h4> 
-                            </div>         
+                            </div>
                             <div class="row" id="modalRow">
                                 <span id="modalInfo">Alamat Penjemputan</span>
                                 <h4 id="modalEntry">{{App\User::where('id', '=', $item->user_id)->first()->alamat}}</h4>     
-                            </div>                    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="map"></div>
+                            <script>
+                            function initMap() {
+                                var uluru = {lat: {{$item->langitude}}, lng: {{$item->longitude}} };
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                zoom: 16,
+                                center: uluru
+                                });
+                                var marker = new google.maps.Marker({
+                                position: uluru,
+                                map: map
+                                });
+                            }
+                            </script>
+                            <script async defer
+                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ1FWeNZxGvRGLzKnWpFNdMOpyqF0rQNs&callback=initMap">
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -112,4 +143,8 @@
         </div>
         @endforeach
     </section>
+@endsection
+
+@section('script')
+
 @endsection
