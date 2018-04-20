@@ -42,7 +42,7 @@ Route::prefix('order')->name('order.')->group(function() {
     Route::post('uploadFotoService', 'OrderController@uploadFotoService')->name('uploadFotoService');
     Route::post('selesaiDikerjakan', 'OrderController@selesaiDikerjakan')->name('selesaiDikerjakan');
     Route::post('barangKeluar', 'OrderController@barangKeluar')->name('barangKeluar');
-    Route::get('working', 'OrderController@working')->name('working');
-    Route::get('finish', 'OrderController@finish')->name('finish');
-    Route::get('archives', 'OrderController@archives')->name('archives');
+    Route::get('sedangDikerjakan', 'OrderController@working')->name('working');
+    Route::get('selesai', 'OrderController@finish')->name('finish');
+    Route::get('arsip', 'OrderController@archives')->name('archives');
 }); 

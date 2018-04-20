@@ -26,7 +26,7 @@
                             @php
                                 $no = 0;
                             @endphp
-                            @foreach (App\Orders::where('status', '=', 6)->get() as $item)
+                            @foreach (App\Orders::where('status', '=', 6)->orderBy('dateIn', 'desc')->get() as $item)
                             <tr>
                                 @php
                                     $user = App\User::where('id', '=', $item->user_id)->first();

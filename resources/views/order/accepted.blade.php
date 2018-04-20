@@ -26,7 +26,7 @@
                             @php
                                 $no = 0;
                             @endphp
-                            @foreach (App\Orders::whereBetween('status', [2, 5])->get() as $item)
+                            @foreach (App\Orders::whereBetween('status', [2, 5])->orderBy('datePenjemputan', 'desc')->get() as $item)
                             <tr>
                                 @php
                                     $user = App\User::where('id', '=', $item->user_id)->first();
@@ -82,8 +82,16 @@
                                             <div class="row">
                                                 <div class="col-sm-11 isian">
                                                     <div class="row" id="modalRow">
-                                                        <span id="modalInfo">Pemilik</span>
+                                                        <span id="modalInfo">Nama Pemilik</span>
                                                         <input class="form-control" id="exampleFormControlTextarea1" rows="1" name="tipeKerusakan" disabled value="{{$user->name}}"></input>
+                                                    </div>
+                                                    <div class="row" id="modalRow">
+                                                        <span id="modalInfo">Nama Barang</span>
+                                                        <input class="form-control" id="exampleFormControlTextarea1" rows="1" name="tipeKerusakan" disabled value="{{$item->nama}}"></input>
+                                                    </div>
+                                                    <div class="row" id="modalRow">
+                                                        <span id="modalInfo">Kode Service</span>
+                                                        <input class="form-control" id="exampleFormControlTextarea1" rows="1" name="tipeKerusakan" disabled value="{{$item->kodeOrder}}"></input>
                                                     </div>
                                                     <form class="form_acc" action="{{route('order.diagnosa')}}" method="POST">
                                                         {{ csrf_field() }}

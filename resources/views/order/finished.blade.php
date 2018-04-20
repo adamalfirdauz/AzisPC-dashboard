@@ -27,7 +27,7 @@
                             @php
                                 $no = 0;
                             @endphp
-                            @foreach (App\Orders::where('status', '=', 7)->get() as $item)
+                            @foreach (App\Orders::where('status', '=', 7)->orderBy('dateIn', 'desc')->get() as $item)
                             @php
                                 $user = App\User::where('id', '=', $item->user_id)->first();
                                 $dateSelesai = new DateTime(date($item->dateSelesai));
