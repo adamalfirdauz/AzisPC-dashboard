@@ -70,7 +70,8 @@ class OrderController extends Controller
         $order->harga = $request->harga;
         $order->tipeKerusakan = $request->tipeKerusakan;
         $order->status = 3;
-        $order->dateDiagnosa = date('Y-m-d H:i:s');
+        $date = new DateTime("now", new DateTimeZone('Asia/Jakarta'));
+        $order->dateDiagnosa = $date->format('Y-m-d H:i:s');
         if(!$order->save()){
             return back()->with('danger', 'Internal server error, silahkan cobalagi.');
         }
@@ -81,7 +82,8 @@ class OrderController extends Controller
     public function mulaiKerjakan(Request $request){
         $order = Orders::where('id', '=', $request->id)->first();
         $order->status = 6;
-        $order->dateMulaiReparasi = date('Y-m-d H:i:s');
+        $date = new DateTime("now", new DateTimeZone('Asia/Jakarta'));
+        $order->dateMulaiReparasi = $date->format('Y-m-d H:i:s');
         if(!$order->save()){
             return back()->with('danger', 'Internal server error, silahkan coba lagi.');
         }
@@ -115,7 +117,8 @@ class OrderController extends Controller
     public function selesaiDikerjakan(Request $request){
         $order = Orders::where('id', '=', $request->id)->first();
         $order->status = 7;
-        $order->dateSelesai = date('Y-m-d H:i:s');
+        $date = new DateTime("now", new DateTimeZone('Asia/Jakarta'));
+        $order->dateSelesai = $date->format('Y-m-d H:i:s');
         if(!$order->save()){
             return back()->with('danger', 'Internal server error, silahkan coba lagi.');
         }
@@ -126,7 +129,8 @@ class OrderController extends Controller
     public function barangKeluar(Request $request){
         $order = Orders::where('id', '=', $request->id)->first();
         $order->status = 8;
-        $order->dateOut = date('Y-m-d H:i:s');
+        $date = new DateTime("now", new DateTimeZone('Asia/Jakarta'));
+        $order->dateOut = $date->format('Y-m-d H:i:s');
         if(!$order->save()){
             return back()->with('danger', 'Internal server error, silahkan coba lagi.');
         }
