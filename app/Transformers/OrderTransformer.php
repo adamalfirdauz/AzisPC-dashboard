@@ -27,6 +27,7 @@ class OrderTransformer extends TransformerAbstract
         // dd($orders,$foto);
         return [
             'id'                        => $order->id,
+            'kodeOrder'                 => $order->kodeOrder,
             'namaBarang'                => $order->nama,
             'alamat'                    => $order->alamat,
             'hp'                        => $user->phone,

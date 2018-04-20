@@ -20,7 +20,8 @@ class ApiOrderController extends Controller
             // 'customerId' => 'required',
             // 'dateIn' => 'required',
             // 'dateOut' => 'required',
-            'tipeKerusakan' => 'required',
+            // 'tipeKerusakan' => 'required',
+            'alamat' => 'required',
             'keluhan' => 'required',
             'kelengkapan' => 'required',
             'status' => 'required',
@@ -35,12 +36,12 @@ class ApiOrderController extends Controller
             'alamat'        => Auth::user()->alamat,
             'user_id'       => Auth::user()->id,
             'dateIn'        => date('Y-m-d H:i:s'),
-            'tipeKerusakan' => $request->tipeKerusakan,
+            // 'tipeKerusakan' => $request->tipeKerusakan,
             'keluhan'       => $request->keluhan,
             'kelengkapan'   => $request->kelengkapan,
             'status'        => $request->status,
             'harga'         => $request->harga,
-            'dp'            => $request->dp,
+            // 'dp'            => $request->dp,
             'longitude'     => $request->longitude,
             'langitude'     => $request->langitude,
         ]);
@@ -54,11 +55,23 @@ class ApiOrderController extends Controller
                 'foto' => $foto
             ]);
         }
+        // String Random Function start
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < 4; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        // String Random Function end
+        $kode =  $randomString . $order->id;
+        $order->where('id', $order->id)->update([
+            'kodeOrder' => $kode
+        ]);
+        $order = Orders::where('id', $order->id)->first();
         $response = fractal()
             ->item($order)
             ->TransformWith(new OrderTransformer)
             ->toArray();
-
         return response()->json($response, 201);
     }
 
@@ -82,13 +95,11 @@ class ApiOrderController extends Controller
             $order->foto = $foto;
         }
         $order->save();
-
         return fractal()
             ->item($order)
             ->transformWith(new OrderTransformer)
             ->toArray();
     }
-
     public function orderById(Orders $order, $user_id)
     {
         $order = $order->where('user_id', '=', $user_id)->get();
@@ -99,7 +110,6 @@ class ApiOrderController extends Controller
             ->includeOrders()
             ->toArray();
     }
-
     public function delete(Orders $order)
     {
         $this->authorize('delete', $order);

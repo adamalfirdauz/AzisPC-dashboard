@@ -110,11 +110,15 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <div id="map"></div>
+                            <div id="map{{$item->id}}"></div>
                             <script>
                             function initMap() {
+                                var str1 = 'map';
+                                var str2 = '{{$item->id}}';
+                                var str3 = str1.concat(str2);
+                                console.log(str1, str2, str3);
                                 var uluru = {lat: {{$item->langitude}}, lng: {{$item->longitude}} };
-                                var map = new google.maps.Map(document.getElementById('map'), {
+                                var map = new google.maps.Map(document.getElementById(str3), {
                                 zoom: 16,
                                 center: uluru
                                 });
@@ -146,5 +150,67 @@
 @endsection
 
 @section('script')
+    {{-- <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ1FWeNZxGvRGLzKnWpFNdMOpyqF0rQNs&callback=initMap">
+    </script> --}}
+    {{-- <script>
+    function initMap() {
+        @foreach (App\Orders::where('status', '=', 1)->get() as $item)
+            var mapId;
+            mapId = "map+{{}}"
+        @endforeach
+        var uluru = {lat: {{$item->langitude}}, lng: {{$item->longitude}} };
+        var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 16,
+        center: uluru
+        });
+        var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+        });
+    }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ1FWeNZxGvRGLzKnWpFNdMOpyqF0rQNs&callback=initMap">
+    </script> --}}
+    
+    
+    {{-- <script>
+    var map;
+    function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 38.7222524, lng: -9.139336599999979},
+        zoom: 12
+    });
 
+    var props = [
+        @foreach ($rooms as $room)
+            coords = [  "{{ $room->lat }}", "{{ $room->lng }}" ],
+            contents = [ "{{ $room->title }}" ],
+        @endforeach
+        ];
+        for (i = 0; i < props.length; i++) {
+            var prop = new google.maps.LatLng(props[i][0], props[i][1]);
+
+            var marker = new google.maps.Marker({
+                position: props.coords,
+                map: map,
+            });
+
+            var infoWindow = new google.maps.InfoWindow({
+            content: props.content,
+            });
+        }
+
+
+    marker.addListener('click', function(){
+        infoWindow.open(map, marker);
+    });
+
+
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+    };
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=MY_GOOGLE_MAPS_KEY&callback=initMap" async defer></script> --}}
 @endsection
