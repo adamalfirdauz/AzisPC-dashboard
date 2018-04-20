@@ -43,7 +43,6 @@ class OrderTransformer extends TransformerAbstract
             'kelengkapan'               => $order->kelengkapan,
             'status'                    => $order->status,
             'harga'                     => $order->harga,
-            'dp'                        => $order->dp,
             'longitude'                 => $order->longitude,
             'langitude'                 => $order->langitude,
             'foto'                      => $foto,

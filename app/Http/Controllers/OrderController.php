@@ -8,6 +8,8 @@ use App\Orders;
 use Auth;
 use Storage;
 use App\Transformers\OrderTransformer;
+use DateTime;
+use DateTimeZone;
 
 class OrderController extends Controller
 {
@@ -53,7 +55,8 @@ class OrderController extends Controller
             //     'datePenjemputan' => date('Y-m-d H:i:s'),
             // ]);
             $order->status = 2;
-            $order->datePenjemputan = date('Y-m-d H:i:s');
+            $date = new DateTime("now", new DateTimeZone('Asia/Jakarta'));
+            $order->datePenjemputan = $date->format('Y-m-d H:i:s');
             if(!$order->save()){
                 return back()->with('danger', 'Gagal mengambil barang, silahkan coba lagi.');
             }

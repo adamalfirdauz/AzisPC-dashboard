@@ -17,135 +17,99 @@
         </h1>
     </section>
     <section class="content">
-        @foreach (App\Orders::where('status', '=', 1)->get() as $item)
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <div class="pict">
-                                    <img src="{{asset('storage/'.$item->foto)}}" height="80">
-                                </div>
-                            </div>
-                            <div class="text col-sm-7">
-                                <h3>{{$item->nama}}</h3>
-                                <p id="date">{{$item->created_at->diffForHumans()}}</p>
-                                <p id="productName">{{$item->nama}}</p>
-                            </div>
-                            <div class="buttonConf col-sm-3">
-                                {{-- <button type="button" class="btn btn-danger" id="confirmation" data-target="">Tolak</button> --}}
-                                <button type="button" class="btn btn-primary" id="confirmation" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">Detail Barang</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {{--  Modal  --}}
-        <div class="modal fade bd-example-modal-lg" id="exampleModalCenter{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLongTitle">Detail</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                                <div id="carouselImage" class="carousel slide" data-ride="carousel">
-                                    <ol class="carousel-indicators">
-                                        <li data-target="#carouselImage" data-slide-to="0" class="active"></li>
-                                    </ol>
-                                    <div class="carousel-inner">
-                                        <div class="item active">
-                                            <img class="d-block w-100" style="height: 400px" src="{{asset('storage/'.$item->foto)}}" alt="First slide" style="width:500px">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-body">
+                      <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Pemilik</th>
+                                <th>Tanggal Masuk</th>
+                                <th>Kode Service</th>
+                                {{-- <th>Deadline</th> --}}
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php
+                                $no = 0;
+                            @endphp
+                            @foreach (App\Orders::where('status', '=', 1)->orderBy('dateIn', 'desc')->get() as $item)
+                            <tr>
+                                @php
+                                    $user = App\User::where('id', '=', $item->user_id)->first();
+                                    $deadline = new DateTime(date("Y-m-d H:i:s",strtotime(date("Y-m-d", strtotime($item->dateIn)))));
+                                    // $now = new DateTime();
+                                    // $remain = $deadline->diff($now)->format("%d");
+                                    $dateIn = new DateTime(date($item->dateIn), new DateTimeZone('Asia/Jakarta'));
+                                @endphp
+                                <td>{{$no+=1}}</td>
+                                <td>{{$user->name}}</td>
+                                <td>{{$dateIn->format("d M Y, H:i:s")}}</td>
+                                <td>{{$item->kodeOrder}}</td>
+                                {{-- @if ($remain == 0)
+                                <td style="background:#f9b9b9">0 Hari Lagi</td>
+                                @else
+                                <td>{{$remain}} Hari Lagi.</td>
+                                @endif --}}
+                                <td align="center"><button class="finished_button" type="submit" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">Detail</button></td>
+                            </tr>
+                            {{--  Modal  --}}
+                            <div class="modal fade" id="exampleModalCenter{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog" role="document" id="modal_acc">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="modal-title" id="exampleModalLongTitle">Daftar Tunggu</h3>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-sm-11 isian">
+                                                    <div class="row" id="modalRow">
+                                                        <span id="modalInfo">Nama Pemilik</span>
+                                                        <input class="form-control" disabled value="{{App\User::where('id', '=', $item->user_id)->first()->name}}"></input>
+                                                    </div>
+                                                    <div class="row" id="modalRow">
+                                                        <span id="modalInfo">Nama Barang</span>
+                                                        <input class="form-control" id="exampleFormControlTextarea1" rows="1" name="tipeKerusakan" disabled value="{{$item->nama}}"></input>
+                                                    </div>
+                                                    <div class="row" id="modalRow">
+                                                        <span id="modalInfo">Kode Service</span>
+                                                        <input class="form-control" disabled value="{{$item->kodeOrder}}"></input>
+                                                    </div>
+                                                    <div class="row" id="modalRow">
+                                                        <span id="modalInfo">Keluhan</span>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="tipeKerusakan" disabled>{{$item->keluhan}}</textarea>
+                                                    </div>  
+                                                    <div class="row" id="modalRow">
+                                                        <span id="modalInfo">Foto Barang</span>
+                                                        <img id="modalEntry" src="{{asset('storage/'.$item->foto)}}" height="300">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form action="{{route('order.ambilBarang')}}" method="post">
+                                                {{ csrf_field() }}
+                                                <input type="hidden" name="id" value="{{$item->id}}">
+                                                <button type="submit" class="btn btn-primary btn-block btn-flat" id="accept"><b>Ambil Barang</b></button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="row" id="modalRow">
-                                <span id="modalInfo">Pemilik</span>
-                                <h3 id="modalEntry">{{App\User::where('id', '=', $item->user_id)->first()->name}}</h3>
                             </div>
-                            <div class="row" id="modalRow">
-                                <span id="modalInfo">Keluhan</span>
-                                <h4 id="modalEntry">{{$item->keluhan}}</h4> 
-                            </div>
-                            <div class="row" id="modalRow">
-                                <p id="modalInfo">Kelengkapan</p>
-                                <div class="col-sm-3">
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">Charger</label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">CD/Driver</label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">Mouse</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">Tas</label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">Lainnya</label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">Lainnya</label>    
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row" id="modalRow">
-                                <span id="modalInfo">Tipe Kerusakan</span>
-                                <h4 id="modalEntry">{{$item->tipeKerusakan}}</h4> 
-                            </div>
-                            <div class="row" id="modalRow">
-                                <span id="modalInfo">Alamat Penjemputan</span>
-                                <h4 id="modalEntry">{{App\User::where('id', '=', $item->user_id)->first()->alamat}}</h4>     
-                            </div>
-                        </div>
+                            @endforeach
+                        </tbody>
+                      </table>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div id="map{{$item->id}}"></div>
-                            <script>
-                            function initMap() {
-                                var str1 = 'map';
-                                var str2 = '{{$item->id}}';
-                                var str3 = str1.concat(str2);
-                                console.log(str1, str2, str3);
-                                var uluru = {lat: {{$item->langitude}}, lng: {{$item->longitude}} };
-                                var map = new google.maps.Map(document.getElementById(str3), {
-                                zoom: 16,
-                                center: uluru
-                                });
-                                var marker = new google.maps.Marker({
-                                position: uluru,
-                                map: map
-                                });
-                            }
-                            </script>
-                            <script async defer
-                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ1FWeNZxGvRGLzKnWpFNdMOpyqF0rQNs&callback=initMap">
-                            </script>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    {{-- <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancel">Batalkan</button> --}}
-                    <form action="{{route('order.ambilBarang')}}" method="post">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="id" value="{{$item->id}}">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat" id="accept"><b>Ambil Barang</b></button>
-                    </form>
-                </div>
+                    <!-- /.box-body -->
                 </div>
             </div>
         </div>
-        @endforeach
     </section>
 @endsection
 

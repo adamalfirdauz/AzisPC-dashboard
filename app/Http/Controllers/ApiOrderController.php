@@ -8,7 +8,8 @@ use App\Orders;
 use Auth;
 use Storage;
 use App\Transformers\OrderTransformer;
-
+use DateTime;
+use DateTimeZone;
 
 class ApiOrderController extends Controller
 {
@@ -16,32 +17,24 @@ class ApiOrderController extends Controller
     {
         $this->validate($request, [
             'namaBarang' => 'required|string',
-            // 'alamat' => 'required',
-            // 'customerId' => 'required',
-            // 'dateIn' => 'required',
-            // 'dateOut' => 'required',
-            // 'tipeKerusakan' => 'required',
             'alamat' => 'required',
             'keluhan' => 'required',
             'kelengkapan' => 'required',
             'status' => 'required',
-            // 'harga' => 'required',
-            // 'dp' => 'required',
             'longitude' => 'required',
             'langitude' => 'required',
             'foto'      => 'file|image'
         ]);
+        $dateIn = new DateTime("now", new DateTimeZone('Asia/Jakarta'));
         $order = $order->create([
             'nama'          => $request->namaBarang,
             'alamat'        => Auth::user()->alamat,
             'user_id'       => Auth::user()->id,
-            'dateIn'        => date('Y-m-d H:i:s'),
-            // 'tipeKerusakan' => $request->tipeKerusakan,
+            'dateIn'        => $dateIn->format('Y-m-d H:i:s'),
             'keluhan'       => $request->keluhan,
             'kelengkapan'   => $request->kelengkapan,
             'status'        => $request->status,
             'harga'         => $request->harga,
-            // 'dp'            => $request->dp,
             'longitude'     => $request->longitude,
             'langitude'     => $request->langitude,
         ]);
