@@ -10,7 +10,7 @@ class Orders extends Model
     protected $fillable = [
         'nama', 'alamat', 'user_id', 'dateIn', 'dateOut', 'tipeKerusakan',
         'keluhan', 'kelengkapan', 'status', 'harga', 'longitude', 'langitude', 'foto',
-        'kodeOrder'
+        'kodeOrder', 'isReviewed'
     ];
 
     public function scopeLatestFirst($query)

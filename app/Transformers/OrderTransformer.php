@@ -48,6 +48,7 @@ class OrderTransformer extends TransformerAbstract
             'foto'                      => $foto,
             'fotoReparasi'              => $fotoReparasi,
             'durasi'                    => $order->durasi,
+            'isReviewed'                => $order->isReviewed,
         ];
     }
 }
