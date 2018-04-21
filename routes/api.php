@@ -29,3 +29,7 @@ Route::post('order/add', 'ApiOrderController@add')->middleware('auth:api');
 Route::get('order/{user_id}', 'ApiOrderController@orderById')->middleware('auth:api');
 Route::post('order/edit/{order}', 'ApiOrderController@update')->middleware('auth:api');
 Route::delete('order/delete/{order}', 'ApiOrderController@delete')->middleware('auth:api');
+Route::prefix('review')->group(function(){
+    Route::post('add','ReviewController@add')->middleware('auth:api');
+    Route::get('getAll','ReviewController@getAll')->middleware('auth:api');
+});

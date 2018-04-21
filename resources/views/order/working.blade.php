@@ -32,7 +32,7 @@
                                     $user = App\User::where('id', '=', $item->user_id)->first();
                                     $deadline = new DateTime(date("Y-m-d",strtotime(date("Y-m-d", strtotime($item->dateMulaiReparasi)) . " +".$item->durasi."days")));
                                     $now = new DateTime();
-                                    $remain = $deadline->diff($now)->format("%d");
+                                    $remain = $deadline->diff($now)->format("%d")+1;
                                 @endphp
                                 <td>{{$no+=1}}</td>
                                 <td>{{$user->name}}</td>

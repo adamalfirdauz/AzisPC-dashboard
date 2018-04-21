@@ -15,11 +15,11 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>No Service</th>
                                 <th>Nama Pemilik</th>
                                 <th>Jenis / Nama Barang</th>
                                 <th>Biaya</th>
                                 <th>Tanggal Selesai</th>
+                                <th>Kode Service</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -36,11 +36,11 @@
                             @endphp
                             <tr>
                                 <td>{{$no+=1}}</td>
-                                <td>{{$item->id}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$item->nama}}</td>
                                 <td>Rp {{$item->harga}},-</td>
                                 <td>{{$dateSelesai->format("d M Y")}}</td>
+                                <td>{{$item->kodeOrder}}</td>
                                 <td align="center"><button class="finished_button" type="submit" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">Detail</button></td>
                             </tr>
                             {{--  Modal  --}}
@@ -63,6 +63,10 @@
                                                     <div class="row" id="modalRow">
                                                         <span id="modalInfo">Nama Barang</span>
                                                         <input class="form-control" id="exampleFormControlTextarea1" rows="1" name="tipeKerusakan" disabled value="{{$item->nama}}"></input>
+                                                    </div>
+                                                    <div class="row" id="modalRow">
+                                                        <span id="modalInfo">Kode Service</span>
+                                                        <input class="form-control" id="exampleFormControlTextarea1" rows="1" name="tipeKerusakan" disabled value="{{$item->kodeOrder}}"></input>
                                                     </div>
                                                     <div class="row" id="modalRow">
                                                         <span id="modalInfo">Keluhan</span>

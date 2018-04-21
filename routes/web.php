@@ -34,7 +34,7 @@ Route::prefix('staff')->name('staff.')->group(function() {
 Route::prefix('order')->name('order.')->group(function() {
     Route::get('/', 'OrderController@index')->name('index');
     Route::get('waiting', 'OrderController@waitingList')->name('waiting');
-    Route::post('ambilBarang/', 'OrderController@ambilBarang')->name('ambilBarang');
+    Route::post('ambilBarang', 'OrderController@ambilBarang')->name('ambilBarang');
     Route::get('diagnosa', 'OrderController@acceptedList')->name('accepted');
     Route::post('diagnosa', 'OrderController@diagnosa')->name('diagnosa');
     Route::post('mulaiKerjakan', 'OrderController@mulaiKerjakan')->name('mulaiKerjakan');

@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Orders;
 use App\User;
+use App\Reviews;
 
 class User extends Authenticatable
 {
@@ -28,19 +29,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
     public function orders()
     {
         return $this->hasMany(Orders::class);
     }
-
     public function ownsOrder(Orders $order)
     {
         return auth()->id() == $order->user->id;
     }
-
     public function ownsUser(User $user)
     {
         return auth()->id() == $user->user->id;
+    }
+    public function reviews()
+    {
+        return $this->hasMany(Reviews::class);
+    }
+    public function ownsReview(Reviews $review)
+    {
+        return auth()->id() == $review->user->id;
     }
 }
