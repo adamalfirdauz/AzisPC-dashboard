@@ -31,5 +31,5 @@ Route::post('order/edit/{order}', 'ApiOrderController@update')->middleware('auth
 Route::delete('order/delete/{order}', 'ApiOrderController@delete')->middleware('auth:api');
 Route::prefix('review')->group(function(){
     Route::post('add','ReviewController@add')->middleware('auth:api');
-    Route::get('getAll','ReviewController@getAll')->middleware('auth:api');
+    Route::get('get','ReviewController@getAll')->middleware('auth:api');
 });
