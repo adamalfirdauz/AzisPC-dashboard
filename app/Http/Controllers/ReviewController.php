@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Transformers\ReviewTransformer;
 use Illuminate\Http\Request;
 use App\Reviews;
+use App\Orders;
 use Auth;
 
 class ReviewController extends Controller
@@ -33,6 +34,9 @@ class ReviewController extends Controller
             ]);
         }
         $review = Reviews::where('id', '=', $review->id)->first();
+        $order = Orders::where('id', '=', $review->orderId)->first();
+        $order->isReviewed = 1;
+        $order->save();
         $response = fractal()
             ->item($review)
             ->TransformWith(new ReviewTransformer)

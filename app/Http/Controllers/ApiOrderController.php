@@ -71,15 +71,18 @@ class ApiOrderController extends Controller
     public function update(Request $request, Orders $order)
     {
         $this->authorize('update', $order);
-        $order->nama                = $request->get('namaBarang', $order->nama );
-        $order->alamat              = $request->get('alamat', $order->alamat );
-        $order->tipeKerusakan       = $request->get('tipeKerusakan', $order->tipeKerusakan );
-        $order->keluhan             = $request->get('keluhan', $order->keluhan );
-        $order->kelengkapan         = $request->get('kelengkapan', $order->kelengkapan );
-        $order->status              = $request->get('status', $order->status );
-        $order->harga               = $request->get('harga', $order->harga );
-        $order->longitude           = $request->get('longitude', $order->longitude );
-        $order->langitude           = $request->get('langitude', $order->langitude );
+        $order->nama = $request->get('namaBarang', $order->nama );
+        $order->alamat = $request->get('alamat', $order->alamat );
+        $order->tipeKerusakan = $request->get('tipeKerusakan', $order->tipeKerusakan );
+        $order->keluhan = $request->get('keluhan', $order->keluhan );
+        $order->kelengkapan  = $request->get('kelengkapan', $order->kelengkapan );
+        $order->status = $request->get('status', $order->status );
+        $order->harga = $request->get('harga', $order->harga );
+        $order->longitude = $request->get('longitude', $order->longitude );
+        $order->langitude = $request->get('langitude', $order->langitude );
+        
+        $request->isReviewed = $request->isReviewed === "1" ? 1: 0;
+        $order->isReviewed = $request->isReviewed;
         if ($request->file('foto')) {
             if ($order->foto) {
                 Storage::delete($order->foto);
