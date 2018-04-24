@@ -33,6 +33,7 @@
             </span>
           </a>
         </li>
+        @if (Auth::user()->status == 1)
         <li class="treeview @if($active>=1 and $active<=5) active @endif">
           <a href="#">
             <i class="fa fa-pie-chart "></i>
@@ -49,6 +50,7 @@
             {{--  <li><a href="#"><i class="fa fa-circle-o"></i> Delete</a></li>  --}}
           </ul>
         </li>
+        @endif
         {{--  <li @if ($active == 1) class="active" @endif>
           <a href="#">
             <i class="fa fa-commenting-o"></i> <span>Review</span>
